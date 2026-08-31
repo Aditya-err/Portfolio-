@@ -41,7 +41,7 @@ Since this project is built using native web technologies, no complex build step
 
 - **Email:** gadityaprasadachary@gmail.com
 - **LinkedIn:** [G. Aditya Prasad Achary](https://linkedin.com/in/g-aditya-prasad-achary-948591264)
-- **GitHub:** [Aditya-717](https://github.com/Aditya-717)
+- **GitHub:** [Aditya-err](https://github.com/Aditya-err)
 
 ---
 *Built with precision, passion, and intelligent engineering.*
