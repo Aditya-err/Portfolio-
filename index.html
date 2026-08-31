@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G. Aditya Prasad Achary — AI Engineer & ML Systems Developer</title>
+  <meta name="description"
+    content="Portfolio of G. Aditya Prasad Achary — AI Engineer building intelligent systems with Computer Vision, ML, and production-ready code.">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Critical: reveal main content immediately on repeat visits (before JS loads) -->
+  <script>
+    if (sessionStorage.getItem('intro_seen')) {
+      document.documentElement.classList.add('intro-done');
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;700;900&display=swap"
+    rel="stylesheet">
+  <!-- CodeMirror 5 — reliable code editor -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+  <!-- GSAP for cinematic animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2300d4ff'/%3E%3Cstop offset='100%25' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='14' fill='url(%23g)'/%3E%3Ctext x='16' y='21' text-anchor='middle' fill='white' font-size='14' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E">
+</head>
+
+<body>
+  <div id="global-bg">
+    <div id="code-particles" class="code-particle-container"></div>
+  </div>
+
+  <!-- ========== 1. INTRO SCREEN ========== -->
+  <div id="intro-screen" class="intro-screen">
+    <div class="terminal-container">
+      <div class="terminal-header">
+        <div class="terminal-tabs">
+          <div class="terminal-tab">CRA - compiled</div>
+          <div class="terminal-tab active">Cypress - run</div>
+          <div class="terminal-tab">Jest - failed</div>
+          <div class="terminal-tab">Jest - running</div>
+        </div>
+      </div>
+      <div class="terminal-main">
+        <div id="terminal-content" class="terminal-content"></div>
+        <div id="terminal-cursor" class="terminal-cursor">_</div>
+      </div>
+      <div class="terminal-footer-credit">
+        credit: 3024 Night - <a href="#">0x3024</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="main-site-content" class="main-site-content">
+
+    <!-- ========== 2. HERO SECTION ========== -->
+    <section class="hero" id="hero">
+      <div class="hero-inner-centered">
+
+        <!-- Large Backdrop Text - Cream White Backdrop -->
+        <div class="hero-backdrop-text">HI I'M</div>
+
+        <!-- Centered Focal Assembly (Name & Details Stacked) -->
+        <div class="hero-visual-centered">
+          <!-- Name & Details Revealed Center stage -->
+          <div class="hero-content-reveal">
+            <h1 class="hero-name-scroll">G. Aditya Prasad Achary</h1>
+            <p class="hero-subtitle">I build AI systems that don't just run — they think.</p>
+            <div class="hero-roles">
+              <span>AI Engineer</span>
+              <span class="role-dot"></span>
+              <span>Computer Vision</span>
+              <span class="role-dot"></span>
+              <span>ML Systems</span>
+            </div>
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-glow">View Projects</a>
+              <a href="pdf/G Aditya PRASAD Achary Resume.pdf" target="_blank" class="btn btn-outline">Resume</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 3. ABOUT / TERMINAL SECTION ========== -->
+    <section class="terminal-section" id="about">
+      <div class="container">
+        <div class="terminal-window">
+          <div class="terminal-bar">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="terminal-title">aditya@portfolio:~/vision $</span>
+          </div>
+          <div class="terminal-body" id="terminal-body">
+            <!-- Intro Logic -->
+            <div class="terminal-line" data-delay="0"><span class="code-keyword">I</span> write <span
+                class="code-func">logic</span>. <span class="code-keyword">Machines</span> execute <span
+                class="code-var">vision</span>.</div>
+            <div class="terminal-line" data-delay="800">From <span class="code-num">pixels</span> to <span
+                class="code-num">predictions</span>, I turn <span class="code-var">ideas</span> into <span
+                class="code-func">intelligent_systems</span>.</div>
+
+            <!-- Architecture Integration -->
+            <div class="terminal-line terminal-heading" data-delay="2000">I architect intelligence through code..</div>
+            <div class="terminal-line terminal-subheading" data-delay="3200">From raw data to real-time inference..
+            </div>
+
+            <div class="terminal-line" data-delay="4500">I design systems that observe, analyze, and evolve.</div>
+            <div class="terminal-line" data-delay="5500">Leveraging modern AI tools and structured engineering
+              principles.
+            </div>
+            <div class="terminal-line" data-delay="6500">I focus on clarity, performance, and scalability.</div>
+            <div class="terminal-line" data-delay="7500">I approach development with clarity, efficiency, and a deep
+              focus
+              on system architecture.</div>
+
+            <div class="terminal-line terminal-meta" data-delay="8500">
+              <span class="code-comment"># Navigation Links:</span><br>
+              <a href="#skills" class="term-link">Learn More ↓</a> &nbsp;
+              <a href="https://github.com/Aditya-717" target="_blank" class="term-link">GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 5. ROTATING HEADLINE SECTION ========== -->
+    <section class="headline-section" id="headline">
+      <div class="container">
+        <p class="headline-lead">Building intelligent systems for the real world.</p>
+        <h2 class="headline-rotating">
+          <span class="headline-word" id="headline-word">Silent Compute</span>
+        </h2>
+      </div>
+    </section>
+
+    <!-- ========== 6. SYSTEM MAP SECTION ========== -->
+    <div class="systemmap-wrapper" id="skills">
+      <div class="systemmap-sticky">
+        <!-- Binary Rain Background (Moved inside sticky for visibility) -->
+        <div class="binary-rain-bg" id="binary-rain-bg"></div>
+
+        <div class="systemmap-header">
+          <h2 class="section-title">Technical Tool-kit</h2>
+          <p class="section-desc">Drag and Scroll to explore the full architecture</p>
+        </div>
+        <div class="systemmap-viewport" id="systemmap-viewport">
+          <canvas id="systemmap-canvas-bg" class="systemmap-bg-canvas"></canvas>
+          <div class="systemmap-track" id="systemmap-track">
+            <!-- SVG layer — viewBox set dynamically by JS -->
+            <svg class="systemmap-connectors" id="systemmap-svg" xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="xMidYMid meet"></svg>
+            <!-- Nodes injected by JS -->
+            <div class="systemmap-nodes" id="systemmap-nodes"></div>
+          </div> <!-- systemmap-track -->
+        </div> <!-- systemmap-viewport -->
+      </div> <!-- systemmap-sticky -->
+    </div> <!-- systemmap-wrapper -->
+
+    <div class="cine-bridge" aria-hidden="true">
+      <div class="cine-bridge-glow"></div>
+    </div>
+
+    <!-- ========== 7. CINEMATIC CODE SECTION (Integrated & Below) ========== -->
+    <section class="cine-section" id="code-snippet">
+      <!-- Layered background effects -->
+      <div class="cine-grain" aria-hidden="true"></div>
+      <div class="cine-radial" aria-hidden="true"></div>
+
+      <div class="cine-inner">
+        <!-- Heading -->
+        <div class="cine-heading-wrap" id="cine-heading">
+          <h2 class="cine-title">One codebase.<br><span class="cine-accent">Infinite possibilities.</span></h2>
+          <p class="cine-subtitle">Real code. Running here. <br> Now Try Your code {}..</p>
+        </div>
+
+        <!-- Panels container: editor + output -->
+        <div class="cine-window-outer" id="cine-window">
+          <div class="cine-window-glow" aria-hidden="true"></div>
+          <div class="cine-panels" id="cine-panels">
+            <!-- ── EDITOR PANEL ── -->
+            <div class="cine-panel cine-panel-editor">
+              <div class="cine-window">
+                <!-- Title bar -->
+                <div class="cine-bar">
+                  <div class="cine-dots">
+                    <span class="cdot cdot-red"></span>
+                    <span class="cdot cdot-yellow"></span>
+                    <span class="cdot cdot-green"></span>
+                  </div>
+                  <span class="cine-filename">model.py</span>
+                  <div class="cine-bar-right">
+                    <span class="cine-lang-badge">Python 3.11</span>
+                    <button class="cine-run-btn" id="cine-run-btn" title="Run code">
+                      Run <span class="cine-run-icon">▶</span>
+                    </button>
+                  </div>
+                </div>
+                <!-- CodeMirror mounts here -->
+                <div class="cine-editor-mount" id="cine-editor"></div>
+                <!-- Status bar -->
+                <div class="cine-statusbar" id="cine-status">
+                  <span class="cine-status-dot"></span>
+                  <span id="cine-status-text">Ready · Python 3.11</span>
+                  <span class="cine-status-right">UTF-8 · LF</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- ── OUTPUT PANEL ── -->
+            <div class="cine-panel cine-panel-output" id="cine-output-panel">
+              <div class="cine-window cine-window-output">
+                <div class="cine-bar">
+                  <div class="cine-dots">
+                    <span class="cdot cdot-red"></span>
+                    <span class="cdot cdot-yellow"></span>
+                    <span class="cdot cdot-green"></span>
+                  </div>
+                  <span class="cine-filename">Output</span>
+                  <div class="cine-bar-right">
+                    <button class="cine-clear-btn" id="cine-clear-btn" title="Clear output">Clear</button>
+                  </div>
+                </div>
+                <pre class="cine-output-pre" id="cine-output"></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROJECTS (MOTIA 3D STYLE) ========== -->
+    <section class="section reveal" id="projects" style="perspective: 2500px; position: relative;">
+      <!-- Projects Floating Symbols Background -->
+      <div id="projects-floating-symbols" class="projects-floating-container"></div>
+
+
+
+      <div class="container" style="text-align: center; position: relative; z-index: 10;">
+        <h2 class="section-title">What I've Built</h2>
+        <p class="section-desc">
+          Building from data to fully featured AI Systems.<br>
+          <span class="desc-highlight">Click on the card to get more info</span>
+        </p>
+      </div>
+
+      <div class="feature-grid motia-grid">
+        <!-- Card 1 -->
+        <div class="project-reveal-box">
+          <div class="feature-card motia-card">
+            <div class="card-stage">
+              <div class="project-img-wrap">
+                <img src="pdf/ai face recognition.png" alt="AI Face Recognition Attendance">
+              </div>
+              <div class="stage-badge">ANALYZE</div>
+            </div>
+            <div class="project-content">
+              <div class="project-tagline">Precision Identity • Real-Time Validation</div>
+              <h4>AI Face Recognition Attendance</h4>
+              <p>A production-ready face recognition system built using deep CNN architectures for real-time
+                identity
+                verification and automated attendance tracking.</p>
+              <div class="tag-row">
+                <span class="tag">Python</span>
+                <span class="tag">OpenCV</span>
+                <span class="tag">TensorFlow</span>
+                <span class="tag">CNN</span>
+              </div>
+              <a href="https://github.com/Aditya-717" target="_blank" class="project-btn">View Code
+                <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="project-reveal-box">
+          <div class="feature-card motia-card">
+            <div class="card-stage">
+              <div class="project-img-wrap">
+                <img src="pdf/sign language detector.png" alt="Exploratory Analytics & Recommender System">
+              </div>
+              <div class="stage-badge">ANALYZE</div>
+            </div>
+            <div class="project-content">
+              <div class="project-tagline">ML • Clustering • Explainability</div>
+              <h4>Exploratory Analytics & Recommender</h4>
+              <p>Hybrid ML system classifying employees into productivity tiers with ~90% accuracy using K-Means, XGBoost, and SHAP-based explainability with a gap-aware recommendation engine.</p>
+              <div class="tag-row">
+                <span class="tag">Python</span>
+                <span class="tag">Scikit-learn</span>
+                <span class="tag">XGBoost</span>
+                <span class="tag">FastAPI</span>
+              </div>
+              <a href="https://github.com/Aditya-717" target="_blank" class="project-btn">View Code
+                <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="project-reveal-box">
+          <div class="feature-card motia-card">
+            <div class="card-stage">
+              <div class="project-img-wrap">
+                <img src="pdf/bulk file renamer.png" alt="Bulk File Renamer">
+              </div>
+              <div class="stage-badge">AUTOMATE</div>
+            </div>
+            <div class="project-content">
+              <div class="project-tagline">System-Level Automation Engine</div>
+              <h4>Bulk File Automator</h4>
+              <p>High-performance file processing utility for batch renaming and rule-based automation. Designed
+                for
+                efficient filesystem operations.</p>
+              <div class="tag-row">
+                <span class="tag">Python</span>
+                <span class="tag">OS APIs</span>
+                <span class="tag">Tkinter</span>
+              </div>
+              <a href="https://github.com/Aditya-717" target="_blank" class="project-btn">View Code
+                <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="project-reveal-box">
+          <div class="feature-card motia-card">
+            <div class="card-stage">
+              <div class="project-img-wrap">
+                <img src="pdf/automation ai agent.png" alt="Document Q&A Assistant RAG">
+              </div>
+              <div class="stage-badge">GENERATE</div>
+            </div>
+            <div class="project-content">
+              <div class="project-tagline">RAG • LLM • Embeddings</div>
+              <h4>Document Q&A Assistant</h4>
+              <p>Local-first RAG system for uploading PDF/TXT documents and asking questions. Implements chunking, embeddings, semantic retrieval, and source-chunk display for accurate, grounded responses.</p>
+              <div class="tag-row">
+                <span class="tag">Python</span>
+                <span class="tag">LangChain</span>
+                <span class="tag">LLM</span>
+                <span class="tag">Vector DB</span>
+              </div>
+              <a href="https://github.com/Aditya-717" target="_blank" class="project-btn">View Code
+                <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="project-reveal-box">
+          <div class="feature-card motia-card">
+            <div class="card-stage">
+              <div class="project-img-wrap">
+                <img src="pdf/ai face recognition.png" alt="AI Face Recognition Attendance">
+              </div>
+              <div class="stage-badge">AUTOMATE</div>
+            </div>
+            <div class="project-content">
+              <div class="project-tagline">Vision • Identity • Automation</div>
+              <h4>AI Face Recognition Attendance</h4>
+              <p>Real-time face recognition system automating attendance tracking using deep learning embeddings and OpenCV — eliminating manual roll-calls and reducing errors significantly.</p>
+              <div class="tag-row">
+                <span class="tag">Python</span>
+                <span class="tag">OpenCV</span>
+                <span class="tag">Deep Learning</span>
+              </div>
+              <a href="https://github.com/Aditya-717" target="_blank" class="project-btn">View Code
+                <span>→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="journey-header">
+        <div class="journey-tagline">Building Intelligence Through</div>
+        <div class="journey-title-wrap">
+          <div class="journey-scroller" id="journey-scroller">
+            my professional journey
+          </div>
+        </div>
+        <div class="container journey-reveal-container">
+          <div class="roadmap-manifesto">
+            <h3 class="manifesto-title">EXPERIENCE & ROADMAP</h3>
+            <p class="manifesto-lead">
+              <span class="syntax-comment">— Every internship added a new layer —</span><br>
+              <span class="syntax-keyword">from</span> <span class="syntax-fn">mastering</span> <span class="syntax-var">Machine Learning fundamentals</span> <span class="syntax-keyword">to</span><br>
+              <span class="syntax-fn">architecting</span> <span class="syntax-var">AI-driven systems,</span><br>
+              <span class="syntax-keyword">from</span> <span class="syntax-var">enterprise-grade simulations</span> <span class="syntax-keyword">to</span> <span class="syntax-var">real-world</span><br>
+              <span class="syntax-var">implementation.</span>
+            </p>
+            <p class="manifesto-subtext">
+              <span class="syntax-keyword">This</span> <span class="syntax-var">wasn't</span> <span class="syntax-keyword">just</span> <span class="syntax-var">training.</span> <span class="syntax-pink">Not</span> <span class="syntax-keyword">just</span> <span class="syntax-var">certifications —</span><br>
+              <span class="syntax-pink">but</span> <span class="syntax-var">continuous evolution</span> <span class="syntax-keyword">toward</span> <span class="syntax-var">building systems</span> <span class="syntax-keyword">that</span> <span class="syntax-fn">think, adapt,</span> <span class="syntax-pink">and</span> <span class="syntax-fn">perform.</span><br>
+              <span class="syntax-keyword">It</span> <span class="syntax-keyword">was</span> <span class="syntax-var">deliberate, structured progression</span> <span class="syntax-keyword">toward</span> <span class="syntax-fn">engineering</span> <span class="syntax-var">intelligent, scalable systems.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="roadmap-scroll-wrapper">
+        <div class="interaction-hint" style="text-align: center; width: 100%; position: relative; z-index: 10; margin-bottom: 120px;">
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: rgba(255, 255, 255, 0.5); padding: 8px 16px; background: rgba(37, 99, 235, 0.1); border: 1px solid rgba(37, 99, 235, 0.2); border-radius: 20px; display: inline-flex; align-items: center; gap: 8px;">
+            Click on the cards below to view my certificates & details
+          </span>
+        </div>
+        <div class="roadmap-container" id="roadmap-container">
+          <!-- SVG for dashed curved lines -->
+          <svg class="roadmap-svg" id="roadmap-svg">
+            <path id="roadmap-path" class="roadmap-path" d="" />
+          </svg>
+
+          <!-- Nodes will be injected here for interactivity -->
+          <div id="roadmap-nodes-data" style="display: none;">
+            <div class="node-data" data-icon="<img src='pdf/ai face recognition.png' alt='AI'>" data-org="CTTC Bhubaneswar" data-role="AI/ML Intern"
+              data-date="JUN 2025 - JUL 2025" data-tag="Internship" data-file="pdf/CTTC Aditya.pdf"
+              data-summary="Intensive government-certified training in AI/ML systems and deep learning models.">
+              <ul>
+                <li>Ministry of MSME certified intensive training.</li>
+                <li>Implemented supervised & unsupervised ML algorithms.</li>
+                <li>Built <strong>Face Recognition Attendance System</strong> as the final project.</li>
+                <li>Applied Python, Keras, and modern ML/DL libraries.</li>
+              </ul>
+            </div>
+            <div class="node-data" data-icon="<img src='pdf/Google.svg' alt='Google'>" data-org="Google × Kaggle" data-role="AI Agents Intensive"
+              data-date="DEC 2025" data-tag="Course" data-file="pdf/Ai agent intensive google.pdf"
+              data-summary="Mastered LLM orchestration and multi-agent reasoning pipelines for autonomous systems.">
+              <ul>
+                <li>LLM-based agent orchestration & multi-agent workflows.</li>
+                <li>Built tool-calling AI agents for autonomous task execution.</li>
+                <li>Implemented reasoning pipelines with Google AI frameworks.</li>
+              </ul>
+            </div>
+            <div class="node-data" data-icon="<img src='pdf/tata-logo.svg' alt='Tata'>" data-org="Tata (Forage)" data-role="GenAI Data Analytics"
+              data-date="OCT 2025" data-tag="Simulation" data-file="pdf/Tata GenAi powered Data analytics Aditya.pdf"
+              data-summary="AI-driven delinquency prediction and data storytelling solutions for enterprise analytics.">
+              <ul>
+                <li>Performed EDA and risk profiling for business strategy.</li>
+                <li>Designed AI-driven delinquency prediction models.</li>
+                <li>Built automated data storytelling dashboards.</li>
+              </ul>
+            </div>
+            <div class="node-data" data-icon="<img src='pdf/tata-logo.svg' alt='Tata'>" data-org="Tata Group" data-role="Cybersecurity Analyst"
+              data-date="AUG 2025" data-tag="Simulation" data-file="pdf/Tata Cybersecurity Analyst Aditya.pdf"
+              data-summary="Conducted IAM security assessments and designed enterprise-grade access control strategies.">
+              <ul>
+                <li>Conducted Identity & Access Management (IAM) security assessments.</li>
+                <li>Designed enterprise-grade access control solutions.</li>
+                <li>Integrated security frameworks with infrastructure.</li>
+              </ul>
+            </div>
+            <div class="node-data" data-icon="<img src='pdf/deloitte-1.svg' alt='Deloitte'>" data-org="Deloitte" data-role="Cyber Job Simulation"
+              data-date="JAN 2026" data-tag="Simulation" data-file="pdf/Deloitte Adtya.pdf"
+              data-summary="Analyzed enterprise risk scenarios and implemented mitigation strategies for security incidents.">
+              <ul>
+                <li>Practical cybersecurity case simulations for enterprise risk.</li>
+                <li>Analyzed scenarios and applied architectural mitigation.</li>
+                <li>Documented technical response strategies for security incidents.</li>
+              </ul>
+            </div>
+            
+            <!-- Oracle Agentic AI (Left, Flow Right) -->
+            <div class="node-data" data-icon="<img src='pdf/Oracle-logomark.svg' alt='Oracle'>" data-org="Oracle University" data-role="Oracle Agentic AI"
+              data-date="2025" data-tag="Certification" data-file="pdf/Oracle ai certification.pdf"
+              data-summary="Oracle-certified expertise in Agentic AI systems, autonomous agents, and AI workflow orchestration.">
+              <ul>
+                <li>Oracle University certified in Agentic AI design and deployment.</li>
+                <li>Built autonomous systems using OCI Generative AI services.</li>
+                <li>Implemented LLM-driven workflows and multi-agent frameworks.</li>
+              </ul>
+            </div>
+            
+            <!-- Oracle Cloud (Right, Flow Down) -->
+            <div class="node-data" data-icon="<img src='pdf/Oracle-logomark.svg' alt='Oracle Cloud'>" data-org="Oracle University" data-role="Oracle Cloud Infrastructure"
+              data-date="2025" data-tag="Certification" data-file="pdf/Oracle Cloud Infrastructure.pdf"
+              data-summary="Oracle-certified cloud practitioner in OCI fundamentals, compute, storage, and AI infrastructure.">
+              <ul>
+                <li>Oracle University certified in OCI core services and architecture.</li>
+                <li>Covered compute, networking, storage, and identity management.</li>
+                <li>Understood OCI AI infrastructure for scalable ML deployments.</li>
+              </ul>
+            </div>
+          </div>
+
+          </div>
+
+          <!-- Node elements will be generated by JS -->
+        </div>
+      </div>
+
+      <!-- Detail Panel -->
+      <div class="node-detail-panel" id="node-detail-panel">
+        <div class="panel-close" id="panel-close">CLOSE [ESC]</div>
+        <div class="panel-sidebar" id="panel-sidebar">
+          <!-- Sidebar content injected by JS -->
+        </div>
+        <div class="panel-preview" id="panel-preview">
+          <!-- File preview injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== EDUCATION ========== -->
+    <section class="education-section reveal" id="education">
+      <!-- Floating academic symbols as background -->
+      <div class="edu-floating-symbols" id="edu-floating-symbols"></div>
+
+      <div class="container" style="max-width: 1200px;">
+        <div class="section-header-center">
+          <h2 class="section-title">Educational Milestones</h2>
+        </div>
+
+        <div class="edu-grid">
+          <!-- MCA -->
+          <div class="edu-card">
+            <div class="edu-accent"></div>
+            <div class="edu-icon">🏛️</div>
+            <div class="edu-body">
+              <h4 class="edu-degree">Master of Computer Applications (MCA)</h4>
+              <div class="edu-uni">NIST University, Berhampur</div>
+              <div class="edu-footer">
+                <span class="edu-date">2024 – 2026</span>
+                <span class="edu-cgpa">CGPA: 8.0 / 10</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- BCA -->
+          <div class="edu-card">
+            <div class="edu-accent"></div>
+            <div class="edu-icon">🎓</div>
+            <div class="edu-body">
+              <h4 class="edu-degree">Bachelor of Computer Applications (BCA)</h4>
+              <div class="edu-uni">Science College (Autonomous), Hinjilicut</div>
+              <div class="edu-footer">
+                <span class="edu-date">2021 – 2024</span>
+                <span class="edu-cgpa">CGPA: 7.50 / 10</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== DEVEX — Coursework / Skills / Languages (gradient section) ========== -->
+    <section class="devex-section reveal">
+
+      <div style="position: relative; z-index: 10;">
+        <h2 class="section-title">Skills & Knowledge</h2>
+        <div class="devex-grid">
+          <div class="devex-card reveal">
+            <h5>Full-Stack & Systems</h5>
+            <div class="tag-row">
+              <span class="tag"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg"
+                  alt="Next.js">
+                Next.js</span>
+              <span class="tag"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-plain.svg"
+                  alt="FastAPI">
+                Flask/FastAPI</span>
+              <span class="tag"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
+                  alt="PostgreSQL"> PostgreSQL</span>
+              <span class="tag"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"
+                  alt="MongoDB"> MongoDB</span>
+            </div>
+          </div>
+          <div class="devex-card reveal">
+            <h5>AI & Computer Vision</h5>
+            <div class="tag-row">
+              <span class="tag"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
+                  alt="Python">
+                Python</span>
+              <span class="tag"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg"
+                  alt="PyTorch"> PyTorch</span>
+              <span class="tag"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg"
+                  alt="TensorFlow"> TensorFlow</span>
+              <span class="tag"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opencv/opencv-original.svg"
+                  alt="OpenCV">
+                OpenCV</span>
+            </div>
+          </div>
+          <div class="devex-card reveal">
+            <h5>Infrastructure & Logic</h5>
+            <div class="tag-row">
+              <span class="tag"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java">
+                Java</span>
+              <span class="tag"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg"
+                  alt="C++"> C/C++</span>
+              <span class="tag"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
+                  alt="Docker">
+                Docker</span>
+              <span class="tag"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git">
+                Git</span>
+              <span class="tag"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" alt="Linux">
+                Linux</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Personalization: What I Build -->
+        <div class="what-i-build reveal">
+          <h4>What I Build</h4>
+          <p>I specialize in bridging the gap between sophisticated AI models and practical, real-world
+            applications.
+            Whether it's an automated vision system for industry or a high-performance system utility, I build
+            with a
+            focus on structural integrity and future-proof design.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========== ASK ABOUT ME (GOOGLE CAPSULE HUB) ========== -->
+    <section class="faq-section reveal" id="faq">
+      <div style="text-align:center; margin-bottom: 60px;">
+        <h2 class="section-title">Inside My Profile</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item open">
+          <button class="faq-question">
+            <span>Who is Aditya?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">I am an MCA student at NIST University, Berhampur, with a strong
+              foundation in
+              software development and applied Artificial Intelligence. I focus on building intelligent,
+              real-world
+              applications using Python, Java, and modern AI/ML techniques.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What technologies do you work with?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">I work with Python, Java, C, C++, SQL for programming. For AI/ML, I
+              use
+              TensorFlow, Keras, OpenCV, Scikit-Learn, NumPy, and Pandas. I also build web apps using HTML, CSS,
+              JavaScript, and Streamlit.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What kind of projects have you built?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">I've built an AI Face Recognition Attendance System using deep
+              learning and
+              computer vision, a Real-Time Sign Language Detection system for accessibility, and automation
+              tools like a
+              Bulk File Renamer.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Are you available for opportunities?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Yes! I'm actively looking for internships, collaborative projects, and
+              entry-level roles in AI/ML and software development. Feel free to reach out via email or LinkedIn.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Where are you located?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">I'm based in Berhampur, Odisha, India. I'm open to remote work and
+              relocation
+              opportunities.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ========== CONTACT SECTION (PREMIUM INTERACTION PANEL) ========== -->
+    <section class="contact-section reveal" id="contact">
+      <div class="contact-glow-aura"></div>
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="section-desc">Innovation begins with a conversation...Create something Extraordinary`</p>
+
+      <!-- Triple Row Moving Logo Wall (Background) -->
+      <div class="contact-ticker-wall">
+        <!-- Row 1: Forward -->
+        <div class="contact-ticker ticker-forward">
+          <div class="ticker-track">
+            <img src="https://www.vectorlogo.zone/logos/linkedin/linkedin-icon.svg" alt="LinkedIn">
+            <img src="https://www.vectorlogo.zone/logos/github/github-icon.svg" alt="GitHub">
+            <img src="https://www.vectorlogo.zone/logos/gmail/gmail-icon.svg" alt="Gmail">
+            <img src="https://www.vectorlogo.zone/logos/instagram/instagram-icon.svg" alt="Instagram">
+            <img src="https://www.vectorlogo.zone/logos/google/google-icon.svg" alt="Google">
+            <img src="https://www.vectorlogo.zone/logos/youtube/youtube-icon.svg" alt="YouTube">
+            <img src="https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg" alt="AWS">
+            <img src="https://www.vectorlogo.zone/logos/snapchat/snapchat-icon.svg" alt="Snapchat">
+            <img src="https://www.vectorlogo.zone/logos/whatsapp/whatsapp-icon.svg" alt="WhatsApp">
+            <!-- Duplicate for Loop -->
+            <img src="https://www.vectorlogo.zone/logos/linkedin/linkedin-icon.svg" alt="LinkedIn">
+            <img src="https://www.vectorlogo.zone/logos/github/github-icon.svg" alt="GitHub">
+            <img src="https://www.vectorlogo.zone/logos/gmail/gmail-icon.svg" alt="Gmail">
+            <img src="https://www.vectorlogo.zone/logos/instagram/instagram-icon.svg" alt="Instagram">
+            <img src="https://www.vectorlogo.zone/logos/google/google-icon.svg" alt="Google">
+            <img src="https://www.vectorlogo.zone/logos/youtube/youtube-icon.svg" alt="YouTube">
+            <img src="https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg" alt="AWS">
+            <img src="https://www.vectorlogo.zone/logos/snapchat/snapchat-icon.svg" alt="Snapchat">
+            <img src="https://www.vectorlogo.zone/logos/whatsapp/whatsapp-icon.svg" alt="WhatsApp">
+          </div>
+        </div>
+
+        <!-- Row 2: Reverse -->
+        <div class="contact-ticker ticker-reverse">
+          <div class="ticker-track">
+            <img src="https://www.vectorlogo.zone/logos/twitter/twitter-icon.svg" alt="Twitter">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" alt="Message">
+            <img src="https://www.vectorlogo.zone/logos/facebook/facebook-icon.svg" alt="Facebook">
+            <img src="https://www.vectorlogo.zone/logos/microsoft/microsoft-icon.svg" alt="MS">
+            <img src="https://www.vectorlogo.zone/logos/slack/slack-icon.svg" alt="Slack">
+            <img src="https://www.vectorlogo.zone/logos/discord/discord-icon.svg" alt="Discord">
+            <img src="https://www.vectorlogo.zone/logos/spotify/spotify-icon.svg" alt="Spotify">
+            <img src="https://www.vectorlogo.zone/logos/netflix/netflix-icon.svg" alt="Netflix">
+            <!-- Duplicate for Loop -->
+            <img src="https://www.vectorlogo.zone/logos/twitter/twitter-icon.svg" alt="Twitter">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" alt="Message">
+            <img src="https://www.vectorlogo.zone/logos/facebook/facebook-icon.svg" alt="Facebook">
+            <img src="https://www.vectorlogo.zone/logos/microsoft/microsoft-icon.svg" alt="MS">
+            <img src="https://www.vectorlogo.zone/logos/slack/slack-icon.svg" alt="Slack">
+            <img src="https://www.vectorlogo.zone/logos/discord/discord-icon.svg" alt="Discord">
+            <img src="https://www.vectorlogo.zone/logos/spotify/spotify-icon.svg" alt="Spotify">
+            <img src="https://www.vectorlogo.zone/logos/netflix/netflix-icon.svg" alt="Netflix">
+          </div>
+        </div>
+
+        <!-- Row 3: Forward -->
+        <div class="contact-ticker ticker-forward">
+          <div class="ticker-track">
+            <img src="https://www.vectorlogo.zone/logos/adobe/adobe-icon.svg" alt="Adobe">
+            <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="Figma">
+            <img src="https://www.vectorlogo.zone/logos/visualstudio_code/visualstudio_code-icon.svg" alt="VSCode">
+            <img src="https://www.vectorlogo.zone/logos/docker/docker-icon.svg" alt="Docker">
+            <img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" alt="K8s">
+            <img src="https://www.vectorlogo.zone/logos/python/python-icon.svg" alt="Python">
+            <img src="https://www.vectorlogo.zone/logos/reactjs/reactjs-icon.svg" alt="React">
+            <img src="https://www.vectorlogo.zone/logos/nodejs/nodejs-icon.svg" alt="Node">
+            <!-- Duplicate for Loop -->
+            <img src="https://www.vectorlogo.zone/logos/adobe/adobe-icon.svg" alt="Adobe">
+            <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="Figma">
+            <img src="https://www.vectorlogo.zone/logos/visualstudio_code/visualstudio_code-icon.svg" alt="VSCode">
+            <img src="https://www.vectorlogo.zone/logos/docker/docker-icon.svg" alt="Docker">
+            <img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" alt="K8s">
+            <img src="https://www.vectorlogo.zone/logos/python/python-icon.svg" alt="Python">
+            <img src="https://www.vectorlogo.zone/logos/reactjs/reactjs-icon.svg" alt="React">
+            <img src="https://www.vectorlogo.zone/logos/nodejs/nodejs-icon.svg" alt="Node">
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Email Pill -->
+        <div class="terminal-pill" onclick="copyToClipboard('gadityaprasadachary@gmail.com', this)">
+          <div class="pill-left">
+            <div class="status-dot"></div>
+            <div class="pill-details">
+              <span class="pill-label">Primary Communication</span>
+              <span class="pill-value">gadityaprasadachary@gmail.com</span>
+            </div>
+          </div>
+          <div class="pill-copy-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span class="copy-tooltip">Copy Email</span>
+          </div>
+        </div>
+
+        <!-- GitHub Pill -->
+        <div class="terminal-pill" onclick="copyToClipboard('github.com/Aditya-717', this)">
+          <div class="pill-left">
+            <div class="status-dot"></div>
+            <div class="pill-details">
+              <span class="pill-label">Source Engineering</span>
+              <span class="pill-value">github.com/Aditya-717</span>
+            </div>
+          </div>
+          <div class="pill-copy-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z">
+              </path>
+            </svg>
+            <span class="copy-tooltip">Copy GitHub</span>
+          </div>
+        </div>
+
+        <!-- LinkedIn Pill -->
+        <div class="terminal-pill" onclick="copyToClipboard('G. Aditya Prasad Achary', this)">
+          <div class="pill-left">
+            <div class="status-dot"></div>
+            <div class="pill-details">
+              <span class="pill-label">Professional Network</span>
+              <span class="pill-value">G. Aditya Prasad Achary</span>
+            </div>
+          </div>
+          <div class="pill-copy-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
+              </path>
+            </svg>
+            <span class="copy-tooltip">Copy Profile</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-footer-subtle">
+        Based in #India • Available for Opportunities
+      </div>
+    </section>
+
+    <div id="custom-pointer"></div>
+
+    <!-- ========== CTA ========== -->
+    <section class="cta-section reveal">
+      <div class="cta-heading-container">
+        <h2 class="cta-line line-1">Let's Build</h2>
+        <h2 class="cta-line line-2">Something</h2>
+        <h2 class="cta-line line-3">Together.</h2>
+      </div>
+
+
+      <div class="pitch-container">
+        <h3 class="pitch-title-impressive">Shape your Vision</h3>
+        <p class="pitch-subtitle">Have any idea in mind.? Let's Build it, & turn into reality.<br> Pitch it to me</p>
+        <div class="pitch-terminal">
+          <!-- Cinematic Pitch Portal - Virtual Transmission Only -->
+          <input type="hidden" name="_to" value="gaditaprasadachary@gmail.com">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot-red"></span>
+              <span class="dot-yellow"></span>
+              <span class="dot-green"></span>
+            </div>
+            <div class="terminal-title">idea_pitch_portal.exe</div>
+          </div>
+          <div class="terminal-body">
+            <div class="line"><span class="prompt">></span> <span class="cmd">From</span> <input type="email"
+                name="email" class="terminal-input-inline" placeholder="-your mail" required></div>
+            <div class="line"><span class="response">Ready for new directives...</span></div>
+            <div class="line"><span class="prompt">></span> <span class="cmd">Pitch your</span> --message 💭</div>
+            <textarea name="message" class="terminal-textarea" placeholder="Type your idea or project pitch here..."
+              required></textarea>
+            <div class="pitch-actions">
+              <button type="button" class="pitch-btn">PITCH ME →</button>
+              <div class="pitch-success-toast">
+                <span class="toast-icon">✓</span>
+                <span class="toast-msg">Sent successfully</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <!-- Premium Footer Glow -->
+    <div class="footer-glow-orb"></div>
+
+    <div class="container">
+      <div class="footer-inner">
+        <!-- LEFT: Logo/Brand -->
+        <div class="footer-brand">
+          <a href="#" class="footer-logo">G. Aditya Prasad Achary</a>
+          <p class="footer-mission">Engineering intelligent systems with clarity and purpose.</p>
+        </div>
+
+        <!-- CENTER: Navigation -->
+        <div class="footer-col">
+          <h5 class="footer-label">Navigation</h5>
+          <nav class="footer-nav">
+            <a href="#about" class="footer-link">About</a>
+            <a href="#skills" class="footer-link">Skills</a>
+            <a href="#projects" class="footer-link">Projects</a>
+            <a href="#experience" class="footer-link">Experience</a>
+            <a href="#education" class="footer-link">Education</a>
+          </nav>
+        </div>
+
+        <!-- RIGHT: Connect -->
+        <div class="footer-col">
+          <h5 class="footer-label">Connect</h5>
+          <nav class="footer-nav">
+            <a href="mailto:gadityaprasadachary@gmail.com" class="footer-link">Email</a>
+            <a href="https://github.com/Aditya-717" target="_blank" class="footer-link">GitHub</a>
+            <a href="https://linkedin.com/in/g-aditya-prasad-achary-948591264" target="_blank"
+              class="footer-link">LinkedIn</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- BOTTOM STRIP -->
+      <div class="footer-strip">
+        <div class="footer-divider"></div>
+        <div class="footer-strip-content">
+          <div class="footer-copyright">
+            <p>© 2026 G. Aditya Prasad Achary</p>
+            <span class="footer-tagline">Built with precision & passion.</span>
+          </div>
+          <div class="footer-strip-socials">
+            <a href="https://github.com/Aditya-717" target="_blank" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+              </svg>
+            </a>
+            <a href="https://linkedin.com/in/g-aditya-prasad-achary-948591264" target="_blank" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ========== PROJECT MODAL ========== -->
+  <div id="project-modal" class="project-modal">
+    <div class="project-modal-backdrop" id="project-modal-backdrop"></div>
+    <div class="project-modal-content">
+      <button class="project-modal-close" id="project-modal-close">Close ✕</button>
+      <div class="project-modal-inner">
+        <div class="project-modal-image">
+          <img id="modal-project-img" src="" alt="Project Image">
+        </div>
+        <div class="project-modal-details">
+          <div id="modal-project-tagline" class="project-tagline"></div>
+          <h3 id="modal-project-title"></h3>
+          <p id="modal-project-desc"></p>
+          <div id="modal-project-tags" class="tag-row"></div>
+          <a id="modal-project-link" href="#" target="_blank" class="project-btn">View Code <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
