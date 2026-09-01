@@ -2185,19 +2185,25 @@ body.greeting-active footer {
 }
 
 .smap-node .node-circle {
-    width: 88px;
-    height: 88px;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.05);
     background: rgba(15, 23, 42, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 26px;
+    font-size: 28px;
     backdrop-filter: blur(16px);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     will-change: transform;
+}
+
+.smap-node .node-circle svg {
+    width: 44px;
+    height: 44px;
+    display: block;
 }
 
 .smap-node.active .node-circle {
@@ -2210,7 +2216,7 @@ body.greeting-active footer {
 }
 
 .smap-node .node-name {
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 1.8px;
     text-transform: uppercase;
@@ -2252,8 +2258,8 @@ body.greeting-active footer {
 }
 
 .smap-child .child-circle {
-    width: 56px;
-    height: 56px;
+    width: 66px;
+    height: 66px;
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.03);
     background: rgba(15, 23, 42, 0.3);
@@ -2273,21 +2279,27 @@ body.greeting-active footer {
 }
 
 .smap-child .child-icon {
-    width: 26px;
-    height: 26px;
+    width: 34px;
+    height: 34px;
     opacity: 0.88;
     display: block;
 }
 
+.smap-child .child-circle svg {
+    width: 34px;
+    height: 34px;
+    display: block;
+}
+
 .smap-child .child-label {
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 700;
     color: rgba(255, 255, 255, 0.6);
     letter-spacing: 0.5px;
 }
 
 .smap-child .child-name {
-    font-size: 8.5px;
+    font-size: 9.5px;
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
