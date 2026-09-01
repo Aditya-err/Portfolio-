@@ -3170,357 +3170,251 @@ body.greeting-active footer {
     position: relative;
     z-index: 5;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+    grid-template-columns: repeat(24, 1fr);
+    gap: 18px;
     background: transparent;
     border: none;
     margin: 20px auto 0;
-    padding: 40px 20px;
+    padding: 20px 20px 40px;
     width: 100%;
-    max-width: 1300px;
-    perspective: 2500px;
+    max-width: 1240px;
 }
 
 .feature-grid::-webkit-scrollbar {
     display: none;
-    /* Hide the ruler/scrollbar */
 }
 
-/* ── Project Modal Stylings ── */
-.project-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 10000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.project-modal.visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-.project-modal-backdrop {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(20px);
-}
-
-.project-modal-content {
-    position: relative;
-    width: 100%;
-    max-width: 900px;
-    background: #0a0a0c;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8);
-    transform: translateY(30px) scale(0.95);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: 2;
-    overflow: hidden;
-}
-
-.project-modal.visible .project-modal-content {
-    transform: translateY(0) scale(1);
-}
-
-.project-modal-close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
-    font-family: 'JetBrains Mono';
-    font-size: 10px;
-    padding: 8px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.project-modal-close:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
-.project-modal-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-}
-
-.project-modal-image {
-    width: 100%;
-    aspect-ratio: 4/3;
-    border-radius: 12px;
-    overflow: hidden;
-    background: #000;
-    border: 1px solid rgba(255, 255, 255, 0.03);
-}
-
-.project-modal-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.project-modal-details {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.project-modal-details h3 {
-    font-size: 28px;
-    font-weight: 800;
-    color: #fff;
-    margin: 0;
-    letter-spacing: -0.5px;
-}
-
-.project-modal-details p {
-    font-size: 15px;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.6);
-    margin: 0;
-}
-
-@media (max-width: 768px) {
-    .project-modal-inner {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
-    .project-modal-content {
-        padding: 60px 24px 24px;
-        max-height: 90vh;
-        overflow-y: auto;
-    }
-}
-
+/* ── Bento Grid Proportions (Matching reference screenshot) ── */
 .project-reveal-box {
     width: 100%;
-    min-height: 280px;
     display: flex;
-    /* Grid item styles */
     opacity: 0;
-    transform: translateY(30px) rotateX(5deg) scale(0.97);
+    transform: translateY(24px) scale(0.98);
     filter: blur(2px);
     transition:
-        opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-        filter 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+        opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform, opacity, filter;
-    transform-style: preserve-3d;
 }
 
 .project-reveal-box.visible {
     opacity: 1;
-    transform: translateY(0) rotateX(0deg) scale(1);
+    transform: translateY(0) scale(1);
     filter: blur(0);
 }
 
-.feature-card {
-    position: relative;
-    background: rgba(255, 255, 255, 0.07);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid rgba(0, 212, 255, 0.2);
-    border-radius: 24px;
-    overflow: hidden;
-    backdrop-filter: blur(12px);
-    /* Premium Glow Aura */
-    box-shadow:
-        0 0 25px rgba(37, 99, 235, 0.15),
-        inset 0 0 15px rgba(255, 255, 255, 0.02);
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.project-reveal-box.bento-wide {
+    grid-column: span 10;
 }
 
-.card-stage {
+.project-reveal-box.bento-standard {
+    grid-column: span 7;
+}
+
+/* ── Bento Card Design ── */
+.feature-card {
     position: relative;
+    background: rgba(15, 19, 27, 0.75);
     width: 100%;
-    height: 130px;
-    background: #050505;
-    padding: 24px;
+    height: 100%;
+    min-height: 210px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    background: rgba(20, 26, 38, 0.92);
+    border-color: rgba(56, 189, 248, 0.35);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.08);
+}
+
+/* ── Card Number Badge (Top-left numbered square) ── */
+.card-num-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.75);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.card-stage::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px);
-    background-size: 20px 20px;
-    opacity: 0.5;
+    z-index: 4;
     pointer-events: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
-.card-stage .project-img-wrap {
+/* ── Image Slot (Ready for user image insertion) ── */
+.project-img-slot {
+    display: none;
     width: 100%;
-    height: 100%;
-    background: #000;
-    border: 1px solid rgba(255, 255, 255, 0.03);
-    border-radius: 8px;
     overflow: hidden;
-    z-index: 1;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: #080a0f;
 }
 
-.card-stage .project-img-wrap img {
+.project-img-slot:has(img),
+.project-img-slot.has-image {
+    display: block;
+}
+
+.project-img-slot img {
     width: 100%;
-    height: 100%;
+    height: 140px;
     object-fit: cover;
-    opacity: 0.7;
-    filter: grayscale(0.5);
-    transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    display: block;
+    transition: transform 0.5s ease;
 }
 
-.stage-badge {
-    position: absolute;
-    bottom: 16px;
-    right: 16px;
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(6px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    color: rgba(255, 255, 255, 0.3);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 8px;
-    letter-spacing: 2px;
-    padding: 3px 8px;
-    border-radius: 2px;
-    pointer-events: none;
-    z-index: 2;
-    transition: all 0.4s ease;
+.feature-card:hover .project-img-slot img {
+    transform: scale(1.04);
 }
 
+/* ── Card Content ── */
 .feature-card .project-content {
-    padding: 32px;
+    padding: 18px 20px 18px;
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    gap: 16px;
-    background: linear-gradient(to bottom, transparent, rgba(37, 99, 235, 0.02));
+    justify-content: space-between;
+    gap: 10px;
+    background: transparent;
     position: relative;
     z-index: 1;
-}
-
-/* Featured Card Styles */
-.card-star {
-    font-size: 1em;
-    margin-left: 8px;
-    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
-    display: inline-block;
-    animation: pulseStar 2s infinite ease-in-out;
-}
-@keyframes pulseStar {
-    0%, 100% { transform: scale(1); opacity: 0.8; }
-    50% { transform: scale(1.2); opacity: 1; }
-}
-.card-windpad-glow {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.15), transparent 60%);
-    pointer-events: none;
-    z-index: 0;
-}
-.project-featured .feature-card {
-    border-color: rgba(56, 189, 248, 0.4);
-    box-shadow: 0 0 30px rgba(56, 189, 248, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.02);
 }
 
 .project-tagline {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
+    font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #00d4ff;
-    opacity: 1;
-    margin-bottom: -2px;
+    letter-spacing: 0.8px;
+    color: #38bdf8;
+    margin-left: 28px; /* Room for number badge */
+    margin-bottom: 2px;
 }
 
 .feature-card h4 {
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 700;
     color: #fff;
     margin: 0;
     letter-spacing: -0.3px;
+    line-height: 1.35;
 }
 
 .feature-card p {
-    font-size: 13px;
-    line-height: 1.4;
-    color: rgba(255, 255, 255, 0.5);
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.55);
     margin: 0;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-/* Technical hover behaviors */
-.feature-card:hover {
-    background: rgba(15, 20, 35, 0.98);
-    border-color: rgba(0, 212, 255, 0.8);
-    transform: translateY(-15px) scale(1.03);
-    /* High Performance Glow */
-    box-shadow:
-        0 30px 60px rgba(0, 0, 0, 0.8),
-        0 0 40px rgba(37, 99, 235, 0.4),
-        0 0 80px rgba(0, 212, 255, 0.2);
+.tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
 }
 
-.feature-card:hover .project-img-wrap img {
-    transform: scale(1.08);
-    opacity: 1;
-    filter: grayscale(0) brightness(1.1);
+.tag-row .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.7);
 }
 
-.feature-card:hover .stage-badge {
-    background: rgba(0, 212, 255, 0.2);
-    border-color: rgba(0, 212, 255, 0.5);
+.project-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #38bdf8;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    margin-top: 4px;
+    width: fit-content;
+}
+
+.project-btn:hover {
     color: #fff;
-    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+    transform: translateX(2px);
 }
 
+/* ── WindPad Featured Card ── */
+.card-star {
+    font-size: 1em;
+    margin-left: 6px;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+    display: inline-block;
+    animation: pulseStar 2s infinite ease-in-out;
+}
+
+@keyframes pulseStar {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 1; }
+}
+
+.card-windpad-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.12), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.project-featured .feature-card {
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.1), inset 0 0 15px rgba(255, 255, 255, 0.02);
+}
+
+/* ── Responsive Breakpoints ── */
 @media (max-width: 1024px) {
     .feature-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-        padding: 60px 20px 80px;
+        gap: 16px;
+        padding: 30px 16px 60px;
+    }
+
+    .project-reveal-box.bento-wide,
+    .project-reveal-box.bento-standard {
+        grid-column: span 1 !important;
     }
 }
 
 @media (max-width: 768px) {
     .feature-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 40px 15px 60px;
+        gap: 16px;
+        padding: 20px 14px 50px;
     }
 
-    .feature-card {
-        border-radius: 16px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-        /* Lighter shadow for perf */
-    }
-
-    .feature-card:hover {
-        transform: none;
-        /* Disable hover lift on mobile to avoid sticky states */
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    .project-reveal-box.bento-wide,
+    .project-reveal-box.bento-standard {
+        grid-column: span 1 !important;
     }
 
     #projects .section-title {
