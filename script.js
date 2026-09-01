@@ -43,7 +43,12 @@
         document.body.style.overflow = '';
         const mainContent = document.getElementById('main-site-content');
         if (mainContent) mainContent.classList.add('revealed');
-        setTimeout(revealHero, 500);
+        setTimeout(revealHero, 300);
+        setTimeout(() => {
+            if (typeof window.launchGreetingCycle === 'function') {
+                window.launchGreetingCycle();
+            }
+        }, 50);
         return;
     }
 
@@ -132,6 +137,9 @@
 
         setTimeout(() => {
             intro.classList.add('hidden');
+            if (typeof window.launchGreetingCycle === 'function') {
+                window.launchGreetingCycle();
+            }
         }, 800);
     }
 
@@ -380,7 +388,30 @@ document.addEventListener('click', e => {
     observer.observe(body);
 })();
 
-// 6. ARCHITECTURE TEXT REVEAL (OBVIATED - MERGED INTO TERMINAL)
+// ===================================================================
+// 6.5. INTERACTIVE IMAGE SPOTLIGHT REVEAL (INSTANT ZERO-LAG TRACKING)
+// ===================================================================
+(function initImageSpotlight() {
+    const card = document.getElementById('hero-image-card');
+    if (!card) return;
+
+    function updateCoords(e) {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mx', `${x.toFixed(1)}px`);
+        card.style.setProperty('--my', `${y.toFixed(1)}px`);
+    }
+
+    card.addEventListener('mouseenter', updateCoords);
+    card.addEventListener('mousemove', (e) => {
+        requestAnimationFrame(() => updateCoords(e));
+    });
+    card.addEventListener('mouseleave', () => {
+        card.style.setProperty('--mx', `-500px`);
+        card.style.setProperty('--my', `-500px`);
+    });
+})();
 
 // ===================================================================
 // 7. ROTATING HEADLINE
@@ -1869,3 +1900,133 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1500);
     });
 });
+
+// ===================================================================
+// 23. CENTER SCREEN 5-WORD GREETING CYCLE (4 SECONDS TOTAL)
+// ===================================================================
+let isGreetingRunning = false;
+window.launchGreetingCycle = function() {
+    if (isGreetingRunning) return;
+    isGreetingRunning = true;
+
+    const greetings = [
+        { text: "Hello", lang: "en" },
+        { text: "नमस्ते", lang: "hi" },
+        { text: "こんにちは", lang: "ja" },
+        { text: "Bonjour", lang: "fr" },
+        { text: "Hola", lang: "es" }
+    ];
+    const greetingEl = document.getElementById('greeting-word');
+    const greetingCenter = document.getElementById('hero-greeting-center');
+    const heroMainContainer = document.getElementById('hero-main-container');
+    
+    if (!greetingEl) return;
+    
+    // Lock body and hide all rest-of-page content exclusively for 4s
+    document.body.classList.add('greeting-active');
+    
+    let currentIndex = 0;
+    greetingEl.textContent = greetings[0].text;
+    greetingEl.setAttribute('data-lang', greetings[0].lang);
+    greetingEl.classList.remove('word-out');
+    greetingEl.classList.add('word-in');
+
+    if (greetingCenter) {
+        greetingCenter.style.display = 'flex';
+        greetingCenter.classList.remove('fade-out');
+    }
+    
+    // 5 words across 3.0 seconds => 600ms per word cycle
+    const intervalId = setInterval(() => {
+        // Smoothly fade & blur out current word
+        greetingEl.classList.remove('word-in');
+        greetingEl.classList.add('word-out');
+        
+        setTimeout(() => {
+            currentIndex++;
+            if (currentIndex >= greetings.length) {
+                // Stop cycle
+                clearInterval(intervalId);
+                
+                // Soft cinematic fade out of center container
+                if (greetingCenter) {
+                    greetingCenter.classList.add('fade-out');
+                    setTimeout(() => {
+                        greetingCenter.style.display = 'none';
+                    }, 600);
+                }
+                
+                // Unlock body and reveal all rest-of-page content
+                document.body.classList.remove('greeting-active');
+                
+                // Smoothly reveal hero main screen
+                if (heroMainContainer) {
+                    heroMainContainer.classList.add('hero-revealed');
+                }
+                
+                // Smoothly reveal skills marquee row
+                const marqueeSection = document.querySelector('.skills-marquee-section');
+                if (marqueeSection) {
+                    marqueeSection.classList.add('marquee-revealed');
+                }
+                
+                // Launch dynamic typewriter animation
+                setTimeout(startHeroTypewriter, 350);
+                return;
+            }
+            
+            // Set next greeting text and smoothly slide/fade in
+            greetingEl.textContent = greetings[currentIndex].text;
+            greetingEl.setAttribute('data-lang', greetings[currentIndex].lang);
+            
+            greetingEl.classList.remove('word-out');
+            // Force reflow for smooth animation
+            void greetingEl.offsetWidth;
+            greetingEl.classList.add('word-in');
+        }, 200);
+    }, 600);
+};
+
+// Dynamic Typewriter Loop for Hero Introduction
+function startHeroTypewriter() {
+    const textEl = document.getElementById('hero-typewriter-text');
+    if (!textEl) return;
+
+    const phrases = [
+        "I build intelligent applications and automation systems using Python, AI and modern LLM technologies.",
+        "Architecting scalable LLM systems, RAG pipelines, and autonomous AI agents.",
+        "Designing end-to-end intelligent systems from data pipelines to real-time inference."
+    ];
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function type() {
+        const currentPhrase = phrases[phraseIndex];
+
+        if (isDeleting) {
+            textEl.textContent = currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            textEl.textContent = currentPhrase.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        let typeSpeed = isDeleting ? 16 : 32;
+
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            typeSpeed = 2800; // Pause at end of sentence
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            typeSpeed = 400; // Pause before typing new sentence
+        }
+
+        setTimeout(type, typeSpeed);
+    }
+
+    type();
+}
+

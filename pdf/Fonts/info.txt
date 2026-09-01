@@ -1,0 +1,8 @@
+﻿license: Freeware, Non-Commercial
+link: https://www.fontspace.com/hello-mermaid-font-f86228
+
+license: Freeware, Non-Commercial
+link: https://www.fontspace.com/k-kabare-font-f115249
+
+license: Demo
+link: https://www.fontspace.com/hellodiary-font-f45066

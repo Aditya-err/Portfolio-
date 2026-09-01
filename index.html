@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;700;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans:wght@500;600;700&family=Noto+Sans+Devanagari:wght@500;600;700&family=Noto+Sans+JP:wght@500;700&family=Outfit:wght@400;500;600;700;800;900&family=Sacramento&display=swap"
     rel="stylesheet">
   <!-- CodeMirror 5 — reliable code editor -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
@@ -33,9 +33,8 @@
 
 <body>
   <div id="global-bg">
-    <div id="code-particles" class="code-particle-container"></div>
+    <div class="grain-overlay"></div>
   </div>
-
   <!-- ========== 1. INTRO SCREEN ========== -->
   <div id="intro-screen" class="intro-screen">
     <div class="terminal-container">
@@ -61,34 +60,127 @@
 
     <!-- ========== 2. HERO SECTION ========== -->
     <section class="hero" id="hero">
-      <div class="hero-inner-centered">
+      <!-- Centered 5-Word Greeting Animation (Appears in Middle of screen on start) -->
+      <div id="hero-greeting-center" class="hero-greeting-center">
+        <span id="greeting-word">Hello</span>
+      </div>
 
-        <!-- Large Backdrop Text - Cream White Backdrop -->
-        <div class="hero-backdrop-text">HI I'M</div>
+      <div class="hero-container" id="hero-main-container">
+        <!-- Left Side: Name, Role, Typewriter & Buttons -->
+        <div class="hero-text-col">
+          <div id="hero-final-text" class="hero-final-container">
 
-        <!-- Centered Focal Assembly (Name & Details Stacked) -->
-        <div class="hero-visual-centered">
-          <!-- Name & Details Revealed Center stage -->
-          <div class="hero-content-reveal">
-            <h1 class="hero-name-scroll">G. Aditya Prasad Achary</h1>
-            <p class="hero-subtitle">I build AI systems that don't just run — they think.</p>
-            <div class="hero-roles">
-              <span>AI Engineer</span>
-              <span class="role-dot"></span>
-              <span>Computer Vision</span>
-              <span class="role-dot"></span>
-              <span>ML Systems</span>
+            <!-- 2. Name with Glassmorphism Typography (No Box) -->
+            <h1 class="hero-name-heading">
+              <span class="hero-hi-text">Hi, I'm</span>
+              <span class="hero-name-highlight">Aditya Prasad</span>
+            </h1>
+
+            <!-- 3. One-line professional identity (Manrope Medium 500, #D5D5DF) -->
+            <p class="hero-role-text">
+              Python Developer · Generative AI · RAG · AI Agents · MCP
+            </p>
+
+            <!-- 4. Dynamic Typewriter Introduction -->
+            <div class="hero-typewriter-wrap">
+              <span class="hero-typewriter-text" id="hero-typewriter-text"></span><span class="hero-typewriter-cursor">|</span>
             </div>
-            <div class="hero-actions">
-              <a href="#projects" class="btn btn-glow">View Projects</a>
-              <a href="pdf/G Aditya PRASAD Achary Resume.pdf" target="_blank" class="btn btn-outline">Resume</a>
+
+            <!-- 5. Streamlined Action Buttons & Centered Social Icons -->
+            <div class="hero-actions-container">
+              <div class="hero-cta-group">
+                <a href="#projects" class="hero-btn-primary">
+                  My Work <span class="btn-arrow">→</span>
+                </a>
+                <a href="pdf/AI_Engineer_Resume_Aditya_Achary.pdf" target="_blank" class="hero-btn-secondary">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                  Resume
+                </a>
+              </div>
+
+              <!-- 6. Clean Social & Contact SVG Icons Centered Under Buttons -->
+              <div class="hero-social-links">
+                <a href="https://github.com/Aditya-err?tab=repositories" target="_blank" class="hero-quick-link" title="GitHub" aria-label="GitHub">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/g-aditya-prasad-achary" target="_blank" class="hero-quick-link" title="LinkedIn" aria-label="LinkedIn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="mailto:gadityaprasadachary@gmail.com" class="hero-quick-link" title="Email" aria-label="Email">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </a>
+              </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Profile Image with B/W & Cursor Flow Spotlight Reveal -->
+        <div class="hero-image-col">
+          <div class="hero-image-card" id="hero-image-card">
+            <!-- B&W Base Layer -->
+            <img src="pdf/LinkedIn.png" alt="Aditya Prasad" class="hero-person-img hero-img-bw">
+            <!-- Dynamic Color Spotlight Layer -->
+            <img src="pdf/LinkedIn.png" alt="Aditya Prasad" class="hero-person-img hero-img-color" aria-hidden="true">
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ========== 3. ABOUT / TERMINAL SECTION ========== -->
+    <!-- ========== 3. SKILLS / ROLES GLASSMORHISM MARQUEE ROW ========== -->
+    <div class="skills-marquee-section">
+      <div class="skills-marquee-container">
+        <div class="skills-marquee-track">
+          <!-- First copy -->
+          <div class="skills-marquee-content">
+            <span class="skill-tag">PYTHON</span>
+            <span class="skill-dot">·</span>
+            <span class="skill-tag">GENERATIVE AI</span>
+            <span class="skill-dot">·</span>
+            <span class="skill-tag">LLMs</span>
+            <span class="skill-dot">·</span>
+            <span class="skill-tag">RAG</span>
+            <span class="skill-dot">·</span>
+            <span class="skill-tag">AI AGENTS</span>
+            <span class="skill-dot">·</span>
+            <span class="skill-tag">MCP</span>
+            <span class="skill-dot">·</span>
+            <span class="skill-tag">MACHINE LEARNING</span>
+            <span class="skill-dot">·</span>
+            <span class="skill-tag">AUTOMATION</span>
+            <span class="skill-dot">·</span>
+            <span class="skill-tag">APIs</span>
+            <span class="skill-dot">·</span>
+            <span class="skill-tag">UI/UX</span>
+            <span class="skill-dot">·</span>
+          </div>
+          <!-- Duplicate copy for seamless infinite loop -->
+          <div class="skills-marquee-content" aria-hidden="true">
+            <span class="skill-tag">PYTHON</span>
+            <span class="skill-dot">·</span>
+            <span class="skill-tag">GENERATIVE AI</span>
+            <span class="skill-dot">·</span>
+            <span class="skill-tag">LLMs</span>
+            <span class="skill-dot">·</span>
+            <span class="skill-tag">RAG</span>
+            <span class="skill-dot">·</span>
+            <span class="skill-tag">AI AGENTS</span>
+            <span class="skill-dot">·</span>
+            <span class="skill-tag">MCP</span>
+            <span class="skill-dot">·</span>
+            <span class="skill-tag">MACHINE LEARNING</span>
+            <span class="skill-dot">·</span>
+            <span class="skill-tag">AUTOMATION</span>
+            <span class="skill-dot">·</span>
+            <span class="skill-tag">APIs</span>
+            <span class="skill-dot">·</span>
+            <span class="skill-tag">UI/UX</span>
+            <span class="skill-dot">·</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 4. ABOUT / TERMINAL SECTION ========== -->
     <section class="terminal-section" id="about">
       <div class="container">
         <div class="terminal-window">
