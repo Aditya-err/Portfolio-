@@ -2047,6 +2047,38 @@ function startHeroTypewriter() {
         setTimeout(type, typeSpeed);
     }
 
-    type();
+        type();
 }
 
+
+// ===================================================================
+// 0. LENIS SMOOTH SCROLL — Premium physics-based inertial scrolling
+// ===================================================================
+(function initLenis() {
+    // Guard: only run if Lenis is loaded
+    if (typeof Lenis === 'undefined') return;
+
+    const lenis = new Lenis({
+        duration: 1.25,           // Overall scroll duration (inertia feel)
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Expo ease-out
+        smoothWheel: true,        // Smooth mouse wheel
+        smoothTouch: false,       // Native touch on mobile (more reliable)
+        wheelMultiplier: 0.9,     // Slightly less aggressive per wheel tick
+        touchMultiplier: 1.5,
+        infinite: false,
+    });
+
+    // Expose globally so other scripts can reference lenis
+    window._lenis = lenis;
+
+    // Keep GSAP ScrollTrigger in sync with Lenis scroll position
+    lenis.on('scroll', ScrollTrigger.update);
+
+    // Drive Lenis from GSAP's RAF loop (eliminates double RAF + drift)
+    gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+    });
+
+    // Tell GSAP ticker not to lag-catch (avoids jitter after tab switch)
+    gsap.ticker.lagSmoothing(0);
+})();

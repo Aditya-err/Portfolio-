@@ -110,8 +110,7 @@
 }
 
 html {
-    scroll-behavior: smooth;
-    scroll-snap-type: y proximity;
+    /* scroll-behavior removed — Lenis handles smooth scrolling */
 }
 
 body {
@@ -1848,8 +1847,8 @@ body.greeting-active footer {
    5. ROTATING HEADLINE
    =================================================================== */
 .headline-section {
-    min-height: 80vh;
-    padding: 100px 24px 180px;
+    min-height: 60vh;
+    padding: 80px 24px 60px;
     text-align: center;
     position: relative;
     z-index: 1;
@@ -1857,7 +1856,6 @@ body.greeting-active footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    scroll-snap-align: start;
     background: transparent;
     box-sizing: border-box;
 }
@@ -1959,12 +1957,10 @@ body.greeting-active footer {
    =================================================================== */
 .systemmap-wrapper {
     position: relative;
-    height: 500vh;
+    height: 450vh;
     z-index: 2;
-    scroll-snap-align: start;
     background: transparent;
-    margin-top: -2px;
-    /* Allow sticky atmospheric bg to show through */
+    margin-top: 0;
 }
 
 .systemmap-sticky {
