@@ -3175,9 +3175,10 @@ body.greeting-active footer {
     background: transparent;
     border: none;
     margin: 16px auto 0;
-    padding: 10px 16px 30px;
+    padding: 10px 48px 30px;
     width: 100%;
-    max-width: 1060px;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .feature-grid::-webkit-scrollbar {
@@ -3275,7 +3276,7 @@ body.greeting-active footer {
 
 .project-img-slot img {
     width: 100%;
-    height: 110px;
+    height: 120px;
     object-fit: cover;
     display: block;
     transition: transform 0.4s ease;
@@ -3378,19 +3379,6 @@ body.greeting-active footer {
 }
 
 /* ── WindPad Featured Card ── */
-.card-star {
-    font-size: 0.9em;
-    margin-left: 4px;
-    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.6));
-    display: inline-block;
-    animation: pulseStar 2s infinite ease-in-out;
-}
-
-@keyframes pulseStar {
-    0%, 100% { transform: scale(1); opacity: 0.8; }
-    50% { transform: scale(1.2); opacity: 1; }
-}
-
 .card-windpad-glow {
     position: absolute;
     inset: 0;
@@ -3409,7 +3397,7 @@ body.greeting-active footer {
     .feature-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
-        padding: 20px 14px 40px;
+        padding: 20px 24px 40px;
     }
 
     .project-reveal-box.bento-wide,
@@ -3422,7 +3410,7 @@ body.greeting-active footer {
     .feature-grid {
         grid-template-columns: 1fr;
         gap: 12px;
-        padding: 16px 12px 35px;
+        padding: 16px 16px 35px;
     }
 
     .project-reveal-box.bento-wide,
