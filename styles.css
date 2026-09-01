@@ -3169,21 +3169,16 @@ body.greeting-active footer {
 .feature-grid {
     position: relative;
     z-index: 5;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    overflow-x: auto;
-    overflow-y: visible;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 32px;
     background: transparent;
     border: none;
-    margin: -10px auto 0;
-    padding: 40px 20px 40px;
+    margin: 20px auto 0;
+    padding: 40px 20px;
     width: 100%;
     max-width: 1300px;
     perspective: 2500px;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
 }
 
 .feature-grid::-webkit-scrollbar {
@@ -3312,10 +3307,10 @@ body.greeting-active footer {
 }
 
 .project-reveal-box {
-    flex: 0 0 360px;
-    width: 360px;
-    height: 280px;
-    /* Changed to landscape orientation */
+    width: 100%;
+    min-height: 280px;
+    display: flex;
+    /* Grid item styles */
     opacity: 0;
     transform: translateY(30px) rotateX(5deg) scale(0.97);
     filter: blur(2px);
@@ -3325,7 +3320,6 @@ body.greeting-active footer {
         filter 0.65s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform, opacity, filter;
     transform-style: preserve-3d;
-    margin-bottom: 20px;
 }
 
 .project-reveal-box.visible {
@@ -3412,13 +3406,39 @@ body.greeting-active footer {
 }
 
 .feature-card .project-content {
-    padding: 16px 20px;
+    padding: 32px;
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 10px;
+    gap: 16px;
     background: linear-gradient(to bottom, transparent, rgba(37, 99, 235, 0.02));
+    position: relative;
+    z-index: 1;
+}
+
+/* Featured Card Styles */
+.card-star {
+    font-size: 1em;
+    margin-left: 8px;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+    display: inline-block;
+    animation: pulseStar 2s infinite ease-in-out;
+}
+@keyframes pulseStar {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 1; }
+}
+.card-windpad-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.15), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+}
+.project-featured .feature-card {
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.02);
 }
 
 .project-tagline {
@@ -3478,27 +3498,17 @@ body.greeting-active footer {
 
 @media (max-width: 1024px) {
     .feature-grid {
-        gap: 20px;
-        padding: 80px 20px 100px;
-    }
-
-    .project-reveal-box {
-        flex: 0 0 220px;
-        width: 220px;
-        height: 460px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        padding: 60px 20px 80px;
     }
 }
 
 @media (max-width: 768px) {
     .feature-grid {
-        gap: 16px;
-        padding: 60px 15px 80px;
-    }
-
-    .project-reveal-box {
-        flex: 0 0 72vw;
-        width: 72vw;
-        height: 460px;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 40px 15px 60px;
     }
 
     .feature-card {
