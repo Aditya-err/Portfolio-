@@ -2059,12 +2059,11 @@ function startHeroTypewriter() {
     if (typeof Lenis === 'undefined') return;
 
     const lenis = new Lenis({
-        duration: 1.25,           // Overall scroll duration (inertia feel)
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Expo ease-out
-        smoothWheel: true,        // Smooth mouse wheel
-        smoothTouch: false,       // Native touch on mobile (more reliable)
-        wheelMultiplier: 0.9,     // Slightly less aggressive per wheel tick
-        touchMultiplier: 1.5,
+        lerp: 0.1,            // Linear interp — snappy, zero-lag feel
+        smoothWheel: true,    // Smooth mouse wheel
+        smoothTouch: false,   // Native touch on mobile
+        wheelMultiplier: 1.1, // Natural scroll distance per wheel tick
+        touchMultiplier: 2,
         infinite: false,
     });
 
