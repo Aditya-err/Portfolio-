@@ -3317,12 +3317,12 @@ body.greeting-active footer {
     height: 280px;
     /* Changed to landscape orientation */
     opacity: 0;
-    transform: translateY(150px) rotateX(15deg) scale(0.95);
-    filter: blur(8px);
+    transform: translateY(30px) rotateX(5deg) scale(0.97);
+    filter: blur(2px);
     transition:
-        opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
-        filter 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+        opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.65s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform, opacity, filter;
     transform-style: preserve-3d;
     margin-bottom: 20px;
@@ -5563,8 +5563,8 @@ body.greeting-active footer {
    =================================================================== */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .reveal.visible {

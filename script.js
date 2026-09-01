@@ -986,11 +986,10 @@ document.addEventListener('click', e => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-            } else {
-                entry.target.classList.remove('visible');
             }
+            // No re-hide: sections stay visible once revealed
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0, rootMargin: '0px 0px -30px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => defaultObserver.observe(el));
 
@@ -1001,15 +1000,12 @@ document.addEventListener('click', e => {
                 boxes.forEach((box, i) => {
                     setTimeout(() => {
                         box.classList.add('visible');
-                    }, i * 200); // 0.2s stagger
+                    }, i * 80); // snappy 80ms stagger
                 });
-            } else {
-                // Reverse: Remove visible class from all boxes when grid leaves viewport
-                const boxes = entry.target.querySelectorAll('.project-reveal-box');
-                boxes.forEach(box => box.classList.remove('visible'));
             }
+            // No re-hide: once revealed, cards stay visible
         });
-    }, { threshold: 0.15 });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
 
     const projectsGrid = document.querySelector('.feature-grid');
     if (projectsGrid) staggeredObserver.observe(projectsGrid);
