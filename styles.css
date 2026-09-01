@@ -2185,15 +2185,15 @@ body.greeting-active footer {
 }
 
 .smap-node .node-circle {
-    width: 88px;
-    height: 88px;
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     background: rgba(15, 23, 42, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 26px;
+    font-size: 22px;
     backdrop-filter: blur(16px);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -2201,8 +2201,8 @@ body.greeting-active footer {
 }
 
 .smap-node .node-circle svg {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
     display: block;
 }
 
@@ -2212,7 +2212,7 @@ body.greeting-active footer {
     box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.15),
         0 0 40px rgba(0, 212, 255, 0.18),
         0 8px 32px rgba(0, 0, 0, 0.3);
-    transform: scale(1.12);
+    transform: scale(1.08);
 }
 
 .smap-node .node-name {
