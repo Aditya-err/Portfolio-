@@ -762,7 +762,7 @@ document.addEventListener('click', e => {
         node.addEventListener('mousedown', e => startDrag(e, 'root', { el: node, cat }));
 
         const count = cat.children.length;
-        const orbitR = count > 6 ? 165 : 138;
+        const orbitR = count > 6 ? 155 : 128;
         cat.children.forEach((child, ki) => {
             const childEl = document.createElement('div');
             childEl.className = 'smap-child';
