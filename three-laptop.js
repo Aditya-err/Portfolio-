@@ -8,9 +8,17 @@ const htmlOverlay = document.getElementById("laptop-screen");
 // Globals
 let scene, camera, renderer;
 let darkPlasticMaterial, baseMetalMaterial, logoMaterial, screenMaterial, keyboardMaterial;
-let macGroup, lidGroup, bottomGroup, screenMesh, screenLight;
+let macGroup, lidGroup, bottomGroup, screenMesh, screenLight, wrapperGroup;
 const screenSize = [29.4, 20];
 let scrollTl;
+
+// Mouse Tracking variables
+let mouseX = 0;
+let mouseY = 0;
+let targetX = 0;
+let targetY = 0;
+const windowHalfX = window.innerWidth / 2;
+const windowHalfY = window.innerHeight / 2;
 
 // Initialize
 initScene();
@@ -27,7 +35,7 @@ modelLoader.load(
         // Initial positioning
         macGroup.rotation.x = 0.2 * Math.PI; // Tilted slightly down
         macGroup.rotation.y = -0.15 * Math.PI; // Tilted to the left
-        macGroup.position.y = -5; // Lowered slightly
+        macGroup.position.y = 5; // Moved higher up the screen
         
         // Lid starts closed
         lidGroup.rotation.x = 0.5 * Math.PI; 
@@ -38,6 +46,7 @@ modelLoader.load(
         render();
         updateSceneSize();
         window.addEventListener("resize", updateSceneSize);
+        document.addEventListener("mousemove", onDocumentMouseMove);
         
         // Refresh ScrollTrigger after loading
         ScrollTrigger.refresh();
@@ -74,9 +83,12 @@ function initScene() {
     lightHolder.add(light);
     lightHolder.quaternion.copy(camera.quaternion);
 
+    wrapperGroup = new THREE.Group();
+    scene.add(wrapperGroup);
+
     macGroup = new THREE.Group();
     macGroup.position.z = -10;
-    scene.add(macGroup);
+    wrapperGroup.add(macGroup);
     
     // Explicitly point camera at the laptop to prevent blank screen
     camera.lookAt(macGroup.position);
@@ -233,7 +245,7 @@ function setupScrollAnimation() {
         duration: 1.5
     }, 0.8)
     .to(macGroup.position, {
-        y: -10, // Adjust centering
+        y: 2, // Adjusted center position higher
         ease: "power2.inOut",
         duration: 1.5
     }, 0.8)
@@ -251,7 +263,22 @@ function setupScrollAnimation() {
     }, 2.3);
 }
 
+function onDocumentMouseMove(event) {
+    mouseX = (event.clientX - windowHalfX) * 0.001;
+    mouseY = (event.clientY - windowHalfY) * 0.001;
+}
+
 function render() {
+    // Parallax effect logic
+    targetX = mouseX * 0.2; // Adjust intensity
+    targetY = mouseY * 0.2;
+    
+    // Smoothly interpolate current rotation towards target rotation
+    if(wrapperGroup) {
+        wrapperGroup.rotation.y += 0.05 * (targetX - wrapperGroup.rotation.y);
+        wrapperGroup.rotation.x += 0.05 * (targetY - wrapperGroup.rotation.x);
+    }
+
     renderer.render(scene, camera);
     requestAnimationFrame(render);
 }
