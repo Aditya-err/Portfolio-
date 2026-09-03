@@ -71,18 +71,28 @@ function initScene() {
     cssRenderer.domElement.style.top = '0px';
     cssRenderer.domElement.style.pointerEvents = 'none'; // Only allow pointer events on the 3D objects
     container.appendChild(cssRenderer.domElement);
-    
-    camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 1, 1000);
-    camera.position.set(0, 0, 45); // Adjusted camera position for interactivity
+    // Camera
+    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
+    camera.position.set(0, 5, 55); // Moved back to make the laptop smaller
 
     // Controls
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.target.set(0, 5, 0); // Focus on the laptop's actual position
-    controls.update();
     controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
-    controls.minDistance = 15;
-    controls.maxDistance = 60;
+    controls.dampingFactor = 0.05; // Smooth dragging
+    controls.rotateSpeed = 0.4; // Slower rotation
+    controls.minDistance = 25; // Don't allow zooming too close
+    controls.maxDistance = 80; // Don't allow zooming too far
+    
+    // Constrain horizontal rotation so you can't see the back of the laptop
+    controls.minAzimuthAngle = -Math.PI / 4; // -45 degrees
+    controls.maxAzimuthAngle = Math.PI / 4;  // 45 degrees
+    
+    // Constrain vertical rotation so you can't see completely under or over it
+    controls.minPolarAngle = Math.PI / 3; // ~60 degrees
+    controls.maxPolarAngle = Math.PI / 2 + 0.1; // slightly past 90 degrees (eye level)
+    
+    controls.update();
     controls.enablePan = false;
     
     // Raycaster for hover & click
@@ -164,7 +174,7 @@ function parseModel(glb) {
             [...child.children].forEach(mesh => {
                 if (mesh.name === "lid") {
                     mesh.material = baseMetalMaterial;
-                } else if (mesh.name === "logo") {
+                } else if (mesh.name === "logo" || mesh.name === "Logo") {
                     mesh.material = logoMaterial;
                 } else if (mesh.name === "screen-frame") {
                     mesh.material = darkPlasticMaterial;
@@ -181,6 +191,10 @@ function parseModel(glb) {
                     mesh.material = darkPlasticMaterial;
                 }
             });
+        } else if (child.name === "Logo" || child.name.toLowerCase().includes("logo")) {
+            // If logo is a root element
+            child.material = logoMaterial;
+            lidGroup.add(child);
         }
     });
 }
