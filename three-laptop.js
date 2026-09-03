@@ -33,8 +33,6 @@ modelLoader.load(
         
         // Lid starts closed
         lidGroup.rotation.x = 0.5 * Math.PI; 
-
-        setupScrollAnimation();
         
         addScreen();
         // Setup CSS3D HTML folders overlay
@@ -79,6 +77,8 @@ function initScene() {
 
     // Controls
     controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.target.set(0, 5, 0); // Focus on the laptop's actual position
+    controls.update();
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
     controls.minDistance = 15;
