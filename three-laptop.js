@@ -108,7 +108,7 @@ function createMaterials() {
     });
 
     screenMaterial = new THREE.MeshBasicMaterial({
-        map: screenImageTexture,
+        color: 0xf5f5f7, // Light macOS base color
         transparent: true,
         opacity: 0.05, // Starts dark
         side: THREE.BackSide
@@ -196,9 +196,10 @@ function setupScrollAnimation() {
     // Ensure overlay is hidden initially
     gsap.set(htmlOverlay, { opacity: 0 });
 
+    const stage = document.querySelector(".projects-stage");
     scrollTl = gsap.timeline({
         scrollTrigger: {
-            trigger: projectsSection,
+            trigger: stage,
             start: "top top",
             end: "+=250%", // 2.5 screens of scrolling
             scrub: 1, // Smooth scrub

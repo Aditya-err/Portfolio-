@@ -1,0 +1,20 @@
+{
+  "name": "motia-clone",
+  "version": "1.0.0",
+  "description": "Welcome to my personal developer portfolio! This repository contains the source code for my premium, interactive, and AI-inspired portfolio website. It showcases my skills, professional journey, educational milestones, and projects with a modern, sleek, and highly animated dark-theme design.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aditya-err/Portfolio-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aditya-err/Portfolio-/issues"
+  },
+  "homepage": "https://github.com/Aditya-err/Portfolio-#readme"
+}
