@@ -18,7 +18,7 @@ createMaterials();
 
 const modelLoader = new THREE.GLTFLoader();
 modelLoader.load(
-    "assets/3d/mac-noUv.glb",
+    MAC_GLB_B64,
     glb => {
         parseModel(glb);
         addScreen();
@@ -101,7 +101,7 @@ function updateSceneSize() {
 
 function createMaterials() {
     const textLoader = new THREE.TextureLoader();
-    const screenImageTexture = textLoader.load("assets/3d/macbook-screen-texture.png", tex => {
+    const screenImageTexture = textLoader.load(SCREEN_TEX_B64, tex => {
         tex.flipY = false;
         tex.wrapS = THREE.RepeatWrapping;
         tex.repeat.y = tex.image.width / tex.image.height / screenSize[0] * screenSize[1];
@@ -114,7 +114,7 @@ function createMaterials() {
         side: THREE.BackSide
     });
     
-    const keyboardTexture = textLoader.load("assets/3d/keyboard-overlay.png");
+    const keyboardTexture = textLoader.load(KEYBOARD_TEX_B64);
     keyboardMaterial = new THREE.MeshBasicMaterial({
         color: 0xffffff,
         alphaMap: keyboardTexture,
