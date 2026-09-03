@@ -6459,3 +6459,77 @@ body.greeting-active footer {
         will-change: auto !important;
     }
 }
+/* Folder Popup */
+.sf-item {
+    position: relative;
+}
+
+.sf-popup {
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    width: 220px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.4);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    padding: 16px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 100;
+    pointer-events: none;
+    text-align: center;
+}
+
+.sf-item:hover .sf-popup {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+}
+
+.sf-popup h4 {
+    margin: 0 0 8px 0;
+    font-size: 15px;
+    color: #1d1d1f;
+    font-weight: 600;
+}
+
+.sf-popup p {
+    margin: 0 0 12px 0;
+    font-size: 12px;
+    color: #515154;
+    line-height: 1.4;
+}
+
+.sf-popup-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #0071e3;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.sf-popup-btn:hover {
+    background: #0077ed;
+    transform: scale(1.05);
+}
+
+.sf-popup::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -8px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.85) transparent transparent transparent;
+}

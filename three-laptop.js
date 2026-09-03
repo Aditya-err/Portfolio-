@@ -27,12 +27,13 @@ modelLoader.load(
         addKeyboard();
         
         // Initial positioning
-        macGroup.rotation.x = 0.2 * Math.PI; // Tilted slightly down
-        macGroup.rotation.y = -0.15 * Math.PI; // Tilted to the left
+        macGroup.rotation.x = 0.05 * Math.PI; // Tilted slightly down
+        macGroup.rotation.y = -0.05 * Math.PI; // Tilted slightly to the left
         macGroup.position.y = 5; // Moved higher up the screen
         
-        // Lid starts closed
-        lidGroup.rotation.x = 0.5 * Math.PI; 
+        // Lid starts open
+        lidGroup.rotation.x = 0.0; // Open state
+        laptopOpen = true;
         
         addScreen();
         // Setup CSS3D HTML folders overlay
@@ -146,7 +147,7 @@ function createMaterials() {
     screenMaterial = new THREE.MeshBasicMaterial({
         color: 0xf5f5f7, // Light macOS base color
         transparent: true,
-        opacity: 0.05, // Starts dark
+        opacity: 1.0, // Fully illuminated since laptop starts open
         side: THREE.BackSide
     });
     
@@ -208,7 +209,7 @@ function addScreen() {
     screenMesh.rotation.set(Math.PI, 0, 0);
     lidGroup.add(screenMesh);
 
-    screenLight = new THREE.RectAreaLight(0xffffff, 0, screenSize[0], screenSize[1]);
+    screenLight = new THREE.RectAreaLight(0xffffff, 5, screenSize[0], screenSize[1]);
     screenLight.position.set(0, 10.5, 0);
     screenLight.rotation.set(Math.PI, 0, 0);
     lidGroup.add(screenLight);
@@ -231,22 +232,15 @@ function addKeyboard() {
 }
 
 function setupCSS3DScreen() {
-    // 1. Get HTML overlay and make it visible
-    const htmlScreen = document.getElementById("laptop-screen");
-    htmlScreen.style.opacity = 1;
-    htmlScreen.style.pointerEvents = 'auto'; // ensure it can be clicked
+    const screenElement = document.getElementById('laptop-screen');
+    const cssObject = new THREE.CSS3DObject(screenElement);
+    // Position it slightly in front of the screen mesh (-0.10 is slightly in front of -0.11)
+    cssObject.position.set(0, 10.5, -0.10); 
+    // Rotate to 0,0,0 so it's right-side up facing the camera (+Z)
+    cssObject.rotation.set(0, 0, 0); 
+    // Scale down the HTML to fit the 3D dimensions (screenSize is 29.4 x 20)
+    cssObject.scale.set(0.04, 0.04, 0.04); 
     
-    // 2. Wrap it in a CSS3DObject
-    const cssObject = new THREE.CSS3DObject(htmlScreen);
-    
-    // 3. Size and Position it on the screen
-    // The screen mesh is 29.4 x 20. The HTML element is 882 x 600.
-    // 882 / 29.4 = 30 scale ratio.
-    cssObject.scale.set(1/30, 1/30, 1/30);
-    cssObject.position.set(0, 10.5, -0.11);
-    cssObject.rotation.x = Math.PI;
-    
-    // 4. Attach CSS3DObject to the lidGroup so it moves perfectly with the lid
     lidGroup.add(cssObject);
 }
 
