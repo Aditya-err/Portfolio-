@@ -351,13 +351,144 @@
       </div>
     </section>
 
-    <!-- ========== PROJECTS (BENTO GRID) ========== -->
-    <section class="section reveal" id="projects" style="position: relative;">
+    <!-- ========== PROJECTS (LAPTOP + FOLDERS) ========== -->
+    <section class="section reveal" id="projects">
       <div class="container" style="text-align: center; position: relative; z-index: 10;">
         <h2 class="section-title">Projects</h2>
+        <p class="projects-subtitle">Click a folder to explore</p>
       </div>
 
-      <div class="feature-grid motia-grid">
+      <!-- Laptop + Folder Stage -->
+      <div class="projects-stage">
+
+        <!-- Laptop Centerpiece -->
+        <div class="laptop-wrap">
+          <img src="pdf/laptop.png" alt="Laptop" class="laptop-img" />
+        </div>
+
+        <!-- Project Folder 1: AI Face Recognition -->
+        <div class="proj-folder" data-project="1" style="--fx: 8%; --fy: 18%; --fsize: 72px;">
+          <div class="folder-icon">
+            <svg viewBox="0 0 56 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 8C4 5.79 5.79 4 8 4H20L26 10H48C50.21 10 52 11.79 52 14V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V8Z" fill="#4a9eff" opacity="0.9"/>
+              <path d="M4 16H52V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V16Z" fill="#5aadff"/>
+            </svg>
+          </div>
+          <span class="folder-label">Face Recognition</span>
+          <div class="folder-tooltip">
+            <div class="ft-tag">AI · COMPUTER VISION · PYTHON</div>
+            <div class="ft-title">AI Face Recognition Attendance</div>
+            <div class="ft-desc">Production-ready face recognition using deep CNN for real-time identity verification and automated attendance tracking.</div>
+            <div class="ft-chips">
+              <span>Python</span><span>OpenCV</span><span>TensorFlow</span><span>CNN</span>
+            </div>
+            <a href="https://github.com/Aditya-err" target="_blank" class="ft-link">View Project →</a>
+          </div>
+        </div>
+
+        <!-- Project Folder 2: Exploratory Analytics -->
+        <div class="proj-folder" data-project="2" style="--fx: 74%; --fy: 10%; --fsize: 60px;">
+          <div class="folder-icon">
+            <svg viewBox="0 0 56 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 8C4 5.79 5.79 4 8 4H20L26 10H48C50.21 10 52 11.79 52 14V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V8Z" fill="#4a9eff" opacity="0.9"/>
+              <path d="M4 16H52V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V16Z" fill="#5aadff"/>
+            </svg>
+          </div>
+          <span class="folder-label">Analytics & ML</span>
+          <div class="folder-tooltip">
+            <div class="ft-tag">ML · CLUSTERING · EXPLAINABILITY</div>
+            <div class="ft-title">Exploratory Analytics & Recommender</div>
+            <div class="ft-desc">Hybrid ML system classifying employees into productivity tiers with ~90% accuracy using K-Means, XGBoost, and SHAP explainability.</div>
+            <div class="ft-chips">
+              <span>Python</span><span>Scikit-learn</span><span>FastAPI</span>
+            </div>
+            <a href="https://github.com/Aditya-err" target="_blank" class="ft-link">View Project →</a>
+          </div>
+        </div>
+
+        <!-- Project Folder 3: WindPad -->
+        <div class="proj-folder proj-folder--featured" data-project="3" style="--fx: 84%; --fy: 52%; --fsize: 80px;">
+          <div class="folder-icon">
+            <svg viewBox="0 0 56 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 8C4 5.79 5.79 4 8 4H20L26 10H48C50.21 10 52 11.79 52 14V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V8Z" fill="#38bdf8" opacity="0.9"/>
+              <path d="M4 16H52V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V16Z" fill="#7dd3fc"/>
+            </svg>
+          </div>
+          <span class="folder-label">WindPad</span>
+          <div class="folder-tooltip ft-right">
+            <div class="ft-tag">PRODUCTIVITY · UI/UX · APPLICATION</div>
+            <div class="ft-title">WindPad</div>
+            <div class="ft-desc">A focused productivity application designed for a clean, distraction-free workflow, with a minimal interface built to keep ideas organized and work uninterrupted.</div>
+            <div class="ft-chips">
+              <span>Python</span><span>Streamlit</span><span>UI/UX</span><span>App Design</span>
+            </div>
+            <a href="https://github.com/Aditya-err" target="_blank" class="ft-link">View Project →</a>
+          </div>
+        </div>
+
+        <!-- Project Folder 4: Bulk File Automator -->
+        <div class="proj-folder" data-project="4" style="--fx: 5%; --fy: 62%; --fsize: 64px;">
+          <div class="folder-icon">
+            <svg viewBox="0 0 56 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 8C4 5.79 5.79 4 8 4H20L26 10H48C50.21 10 52 11.79 52 14V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V8Z" fill="#4a9eff" opacity="0.9"/>
+              <path d="M4 16H52V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V16Z" fill="#5aadff"/>
+            </svg>
+          </div>
+          <span class="folder-label">File Automator</span>
+          <div class="folder-tooltip">
+            <div class="ft-tag">AUTOMATION · SYSTEM · PYTHON</div>
+            <div class="ft-title">Bulk File Automator</div>
+            <div class="ft-desc">High-performance file processing utility for batch renaming and rule-based automation. Designed for efficient filesystem operations at scale.</div>
+            <div class="ft-chips">
+              <span>Python</span><span>OS APIs</span><span>Automation</span>
+            </div>
+            <a href="https://github.com/Aditya-err" target="_blank" class="ft-link">View Project →</a>
+          </div>
+        </div>
+
+        <!-- Project Folder 5: Document Intelligence -->
+        <div class="proj-folder" data-project="5" style="--fx: 22%; --fy: 78%; --fsize: 68px;">
+          <div class="folder-icon">
+            <svg viewBox="0 0 56 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 8C4 5.79 5.79 4 8 4H20L26 10H48C50.21 10 52 11.79 52 14V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V8Z" fill="#4a9eff" opacity="0.9"/>
+              <path d="M4 16H52V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V16Z" fill="#5aadff"/>
+            </svg>
+          </div>
+          <span class="folder-label">Doc Intelligence</span>
+          <div class="folder-tooltip ft-top">
+            <div class="ft-tag">RAG · LLM · EMBEDDINGS</div>
+            <div class="ft-title">Document Intelligence</div>
+            <div class="ft-desc">Local-first RAG system for PDF/TXT documents. Implements chunking, embeddings, semantic retrieval, and source-chunk display for accurate, grounded responses.</div>
+            <div class="ft-chips">
+              <span>Python</span><span>LangChain</span><span>Vector DB</span>
+            </div>
+            <a href="https://github.com/Aditya-err" target="_blank" class="ft-link">View Project →</a>
+          </div>
+        </div>
+
+        <!-- Project Folder 6: AI Automation Engine -->
+        <div class="proj-folder" data-project="6" style="--fx: 62%; --fy: 80%; --fsize: 58px;">
+          <div class="folder-icon">
+            <svg viewBox="0 0 56 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 8C4 5.79 5.79 4 8 4H20L26 10H48C50.21 10 52 11.79 52 14V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V8Z" fill="#4a9eff" opacity="0.9"/>
+              <path d="M4 16H52V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V16Z" fill="#5aadff"/>
+            </svg>
+          </div>
+          <span class="folder-label">AI Engine</span>
+          <div class="folder-tooltip ft-top">
+            <div class="ft-tag">AGENTS · PIPELINES · LLM</div>
+            <div class="ft-title">AI Automation Engine</div>
+            <div class="ft-desc">Multi-agent orchestration system that autonomously executes complex multi-step tasks using LLM tool-calling, task decomposition, and dynamic workflow routing.</div>
+            <div class="ft-chips">
+              <span>Python</span><span>LangGraph</span><span>OpenAI</span>
+            </div>
+            <a href="https://github.com/Aditya-err" target="_blank" class="ft-link">View Project →</a>
+          </div>
+        </div>
+
+      </div><!-- /projects-stage -->
+
+      <div class="feature-grid motia-grid" style="display:none!important;">
         <!-- Project 1: AI Face Recognition -->
         <div class="project-reveal-box">
           <div class="project-num-label">Project 1</div>
