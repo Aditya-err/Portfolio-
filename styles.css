@@ -3170,19 +3170,31 @@ body.greeting-active footer {
     position: relative;
     z-index: 5;
     display: grid;
-    grid-template-columns: repeat(24, 1fr);
-    gap: 14px;
+    grid-template-columns: repeat(2, minmax(320px, 480px));
+    justify-content: center;
+    gap: 30px;
     background: transparent;
     border: none;
-    margin: 16px auto 0;
-    padding: 10px 48px 30px;
+    margin: 40px auto 0;
+    padding: 20px 24px 80px;
     width: 100%;
-    max-width: 100%;
+    max-width: 1200px;
     box-sizing: border-box;
 }
 
 .feature-grid::-webkit-scrollbar {
     display: none;
+}
+
+/* Stagger every even item downwards for the floating masonry look */
+.feature-grid .project-reveal-box:nth-child(even) {
+    transform: translateY(80px) scale(0.98);
+}
+.project-reveal-box.visible:nth-child(even) {
+    transform: translateY(80px) scale(1);
+}
+.project-reveal-box.visible:nth-child(odd) {
+    transform: translateY(0) scale(1);
 }
 
 /* ── Bento Grid Proportions (Matching reference screenshot) ── */
@@ -3193,24 +3205,16 @@ body.greeting-active footer {
     transform: translateY(20px) scale(0.98);
     filter: blur(2px);
     transition:
-        opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-        filter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform, opacity, filter;
 }
 
-.project-reveal-box.visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-}
-
-.project-reveal-box.bento-wide {
-    grid-column: span 10;
-}
-
+/* Reset bento spans for 2-column staggered */
+.project-reveal-box.bento-wide,
 .project-reveal-box.bento-standard {
-    grid-column: span 7;
+    grid-column: span 1 !important;
 }
 
 /* ── Compact Bento Card Design ── */
@@ -3422,6 +3426,68 @@ body.greeting-active footer {
         font-size: 32px;
         letter-spacing: -1.5px;
     }
+}
+
+/* ── Floating Cursors Background ── */
+.floating-cursors {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.f-cursor {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    animation: floatCursor 12s infinite ease-in-out alternate;
+    filter: drop-shadow(0 0 20px currentColor);
+}
+
+.f-cursor::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    width: 100px;
+    height: 100px;
+    background: currentColor;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(40px);
+    opacity: 0.15;
+    z-index: -1;
+}
+
+.f-cursor .cursor-icon {
+    transform: rotate(-15deg);
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.f-cursor .cursor-name {
+    padding: 2px 6px;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 9px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.f-cursor-1 { color: #ec4899; top: 10%; left: 15%; animation-delay: 0s; }
+.f-cursor-2 { color: #3b82f6; top: 35%; left: 5%; animation-delay: -2s; animation-duration: 15s; }
+.f-cursor-3 { color: #f97316; top: 75%; left: 12%; animation-delay: -5s; animation-duration: 18s; }
+.f-cursor-4 { color: #22c55e; top: 20%; right: 25%; animation-delay: -1s; animation-duration: 14s; }
+.f-cursor-5 { color: #a855f7; top: 80%; right: 15%; animation-delay: -4s; animation-duration: 17s; }
+
+@keyframes floatCursor {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(40px, -30px) scale(1.1); }
+    66% { transform: translate(-20px, 50px) scale(0.9); }
+    100% { transform: translate(30px, 20px) scale(1); }
 }
 
 /* ===================================================================
