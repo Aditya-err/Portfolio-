@@ -1,5 +1,4 @@
-import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
-import { GLTFLoader } from "https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js";
+// THREE and THREE.GLTFLoader are now available globally via script tags in index.html
 
 // DOM Elements
 const canvasEl = document.getElementById("laptop-canvas");
@@ -17,7 +16,7 @@ let scrollTl;
 initScene();
 createMaterials();
 
-const modelLoader = new GLTFLoader();
+const modelLoader = new THREE.GLTFLoader();
 modelLoader.load(
     "assets/3d/mac-noUv.glb",
     glb => {

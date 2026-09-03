@@ -16,9 +16,32 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans:wght@500;600;700&family=Noto+Sans+Devanagari:wght@500;600;700&family=Noto+Sans+JP:wght@500;700&family=Outfit:wght@400;500;600;700;800;900&family=Sacramento&display=swap"
     rel="stylesheet">
+    
+  <script>
+    window.addEventListener("error", function(e) {
+      let errDiv = document.getElementById("debug-error");
+      if(!errDiv) {
+        errDiv = document.createElement("div");
+        errDiv.id = "debug-error";
+        errDiv.style.cssText = "position:fixed; top:0; left:0; width:100%; background:red; color:white; padding:20px; z-index:99999; font-size:16px; font-family:monospace;";
+        document.body.appendChild(errDiv);
+      }
+      errDiv.innerHTML += e.message + " in " + e.filename + ":" + e.lineno + "<br>";
+    });
+    window.addEventListener("unhandledrejection", function(e) {
+      let errDiv = document.getElementById("debug-error");
+      if(!errDiv) {
+        errDiv = document.createElement("div");
+        errDiv.id = "debug-error";
+        errDiv.style.cssText = "position:fixed; top:0; left:0; width:100%; background:red; color:white; padding:20px; z-index:99999; font-size:16px; font-family:monospace;";
+        document.body.appendChild(errDiv);
+      }
+      errDiv.innerHTML += "Promise Error: " + (e.reason && e.reason.message || e.reason) + "<br>";
+    });
+  </script>
+
   <!-- CodeMirror 5 — reliable code editor -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
@@ -1043,6 +1066,11 @@
   </div>
 
   <script src="script.js"></script>
-  <script type="module" src="three-laptop.js"></script>
+  <!-- Load Three.js globally -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Load GLTFLoader globally (compatible with r128) -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  
+  <script src="three-laptop.js"></script>
 </body>
 </html>
