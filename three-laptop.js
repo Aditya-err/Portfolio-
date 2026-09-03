@@ -1,5 +1,5 @@
-import * as THREE from "three";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
+import { GLTFLoader } from "https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js";
 
 // DOM Elements
 const canvasEl = document.getElementById("laptop-canvas");
@@ -42,6 +42,13 @@ modelLoader.load(
         
         // Refresh ScrollTrigger after loading
         ScrollTrigger.refresh();
+    },
+    (xhr) => {
+        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    (error) => {
+        console.error('An error happened', error);
+        canvasEl.parentElement.innerHTML = `<div style="color:red; background:black; padding:20px; z-index:9999; position:relative;">Error loading 3D model: ${error.message}. If you are opening this file directly (file:///), 3D models cannot load due to browser CORS policies. Please use a local server like Live Server.</div>`;
     }
 );
 
@@ -71,6 +78,9 @@ function initScene() {
     macGroup = new THREE.Group();
     macGroup.position.z = -10;
     scene.add(macGroup);
+    
+    // Explicitly point camera at the laptop to prevent blank screen
+    camera.lookAt(macGroup.position);
     
     lidGroup = new THREE.Group();
     macGroup.add(lidGroup);
