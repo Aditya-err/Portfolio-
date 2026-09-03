@@ -3180,7 +3180,15 @@ body.greeting-active footer {
     text-transform: uppercase;
 }
 
-/* Stage: full-width relative container */
+/* Projects header */
+.projects-header {
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    padding-top: 60px;
+}
+
+/* Stage: fills viewport, position reference for pinned animation */
 .projects-stage {
     position: relative;
     width: 100%;
@@ -3188,19 +3196,21 @@ body.greeting-active footer {
     margin: 40px auto 0;
     height: 620px;
     overflow: visible;
+    perspective: 1200px; /* 3D perspective for the whole stage */
 }
 
-/* Laptop centerpiece */
+/* Laptop centerpiece — natural position, GSAP drives the 3D zoom */
 .laptop-wrap {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 58%;
-    max-width: 580px;
+    width: 62%;
+    max-width: 620px;
     z-index: 5;
+    will-change: transform, width;
+    filter: drop-shadow(0 30px 60px rgba(0,0,0,0.55));
     animation: laptopFloat 5s ease-in-out infinite;
-    filter: drop-shadow(0 30px 60px rgba(0,0,0,0.5));
 }
 
 .laptop-img {
@@ -3211,8 +3221,130 @@ body.greeting-active footer {
 
 @keyframes laptopFloat {
     0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
-    50%       { transform: translate(-50%, -50%) translateY(-12px); }
+    50%       { transform: translate(-50%, -50%) translateY(-10px); }
 }
+
+/* ── Laptop Screen Overlay — positioned to match the MacBook screen in laptop.png ──
+   The MacBook screen in the isometric PNG occupies roughly:
+   left: 29%, top: 3%, width: 39%, height: 37% of the image dimensions.
+   Matched to the white area visible in the 3D angled view. */
+.laptop-screen-overlay {
+    position: absolute;
+    left: 29.5%;
+    top: 3%;
+    width: 39%;
+    height: 37.5%;
+    background: #0d1117;
+    border-radius: 3px 5px 1px 0;
+    overflow: hidden;
+    opacity: 1;    /* Always visible — folders show on the screen */
+    pointer-events: auto;
+    z-index: 6;
+    display: flex;
+    flex-direction: column;
+}
+
+/* macOS menubar strip */
+.screen-menubar {
+    background: #1c1c1e;
+    height: 28px;
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    flex-shrink: 0;
+}
+
+.smb-dots {
+    display: flex;
+    gap: 5px;
+}
+
+.smb-dots span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+
+.smb-dots span:nth-child(1) { background: #ff5f57; }
+.smb-dots span:nth-child(2) { background: #febc2e; }
+.smb-dots span:nth-child(3) { background: #28c840; }
+
+.smb-title {
+    flex: 1;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.3px;
+}
+
+.smb-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: rgba(255,255,255,0.35);
+}
+
+/* Inner folder grid (the desktop) */
+.screen-folders {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 4px;
+    padding: 8px;
+    background: linear-gradient(135deg, #0d1117 0%, #111827 100%);
+    align-items: center;
+    justify-items: center;
+}
+
+.sf-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+    padding: 4px;
+    border-radius: 6px;
+    opacity: 1;   /* visible from the start */
+    transform: none;
+}
+
+.sf-item:hover {
+    background: rgba(255,255,255,0.06);
+    transform: scale(1.1);
+}
+
+.sf-icon {
+    width: 34px;
+    height: 30px;
+    filter: drop-shadow(0 2px 6px rgba(74,158,255,0.4));
+}
+
+.sf-icon svg { width: 100%; height: 100%; }
+
+.sf-item span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5px;
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    white-space: nowrap;
+    max-width: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sf-featured .sf-icon { filter: drop-shadow(0 2px 8px rgba(56,189,248,0.55)); }
+.sf-featured span { color: #7dd3fc; }
+
+/* ── When section is fully zoomed (class added by JS) ── */
+#projects.laptop-zoomed .laptop-wrap {
+    animation: none !important;
+}
+
 
 /* Folder positioning via CSS variables */
 .proj-folder {
