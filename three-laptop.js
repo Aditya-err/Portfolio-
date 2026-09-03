@@ -279,8 +279,6 @@ function onMouseMove(event) {
     }
 }
 
-}
-
 function render() {
     
     
