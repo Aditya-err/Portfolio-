@@ -3211,12 +3211,10 @@ body.greeting-active footer {
     display: block;
     width: 100%;
     height: 100%;
-    cursor: grab;
+    /* pointer-events handled by GSAP raycaster */
 }
 
-#laptop-canvas:active {
-    cursor: grabbing;
-}
+
     outline: none;
 }
 

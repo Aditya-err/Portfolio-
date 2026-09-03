@@ -9,7 +9,7 @@ const htmlOverlay = document.getElementById("laptop-screen");
 let scene, camera, renderer, cssRenderer;
 let darkPlasticMaterial, baseMetalMaterial, logoMaterial, screenMaterial, keyboardMaterial;
 let macGroup, lidGroup, bottomGroup, screenMesh, screenLight;
-let controls, raycaster, mouse;
+let raycaster, mouse;
 let laptopOpen = false;
 let isHovering = false;
 const screenSize = [29.4, 20];
@@ -26,25 +26,54 @@ modelLoader.load(
         addScreen();
         addKeyboard();
         
-        // Initial positioning
-        macGroup.rotation.x = 0.05 * Math.PI; // Tilted slightly down
-        macGroup.rotation.y = -0.05 * Math.PI; // Tilted slightly to the left
-        macGroup.position.y = 5; // Moved higher up the screen
-        
-        // Lid starts open
-        lidGroup.rotation.x = 0.0; // Open state
-        laptopOpen = true;
-        
-        addScreen();
         // Setup CSS3D HTML folders overlay
         setupCSS3DScreen();
+        
+        // --- INITIAL STATE (0% Scroll) ---
+        // Laptop closed, front 3/4 angle
+        macGroup.position.set(0, -2, 0);
+        macGroup.rotation.set(0.1, -0.2, 0);
+        lidGroup.rotation.x = 0.5 * Math.PI; // Closed
+        camera.position.set(0, 2, 45);
+        laptopOpen = false;
+
+        // --- GSAP SCROLLTRIGGER TIMELINE ---
+        let tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".projects-stage",
+                start: "top top",
+                end: "+=3000", // 3000px of scrolling for the sequence
+                scrub: 1.5, // Smooth scrubbing
+                pin: true,
+                anticipatePin: 1
+            }
+        });
+
+        // Phase 1 (0% to 25%): Lid opens, subtle rotation to the side
+        tl.to(lidGroup.rotation, { x: 0.2 * Math.PI, duration: 1 }, 0);
+        tl.to(macGroup.rotation, { y: -0.5, duration: 1 }, 0);
+        tl.to(camera.position, { y: 5, z: 50, duration: 1 }, 0);
+
+        // Phase 2 (25% to 50%): Side profile, lid opens more
+        tl.to(lidGroup.rotation, { x: 0, duration: 1 }, 1);
+        tl.to(macGroup.rotation, { y: -Math.PI / 2, duration: 1 }, 1);
+        tl.to(camera.position, { y: 3, z: 55, duration: 1 }, 1);
+
+        // Phase 3 (50% to 75%): Back 3/4 view (Apple logo visible)
+        tl.to(macGroup.rotation, { y: -Math.PI * 0.8, duration: 1 }, 2);
+        tl.to(camera.position, { y: 5, z: 60, duration: 1 }, 2);
+
+        // Phase 4 (75% to 100%): Smooth swing to front and zoom into screen
+        tl.to(macGroup.rotation, { y: 0, x: 0, duration: 1.5 }, 3);
+        tl.to(macGroup.position, { y: 0, duration: 1.5 }, 3);
+        tl.to(camera.position, { y: 10.5, z: 35, duration: 1.5 }, 3); // Zoomed exactly in front of screen
         
         render();
         updateSceneSize();
         window.addEventListener("resize", updateSceneSize);
         window.addEventListener("mousemove", onMouseMove);
-        window.addEventListener("mousedown", onMouseDown);
-        window.addEventListener("mouseup", onMouseUp);
+        
+        // Removed manual toggling (onMouseDown/onMouseUp) as it's scroll-driven
     },
     (xhr) => {
         console.log((xhr.loaded / xhr.total * 100) + '% loaded');
@@ -76,25 +105,7 @@ function initScene() {
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
     camera.position.set(0, 5, 55); // Moved back to make the laptop smaller
 
-    // Controls
-    controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.target.set(0, 5, 0); // Focus on the laptop's actual position
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.05; // Smooth dragging
-    controls.rotateSpeed = 0.4; // Slower rotation
-    controls.minDistance = 25; // Don't allow zooming too close
-    controls.maxDistance = 80; // Don't allow zooming too far
     
-    // Constrain horizontal rotation so you can't see the back of the laptop
-    controls.minAzimuthAngle = -Math.PI / 4; // -45 degrees
-    controls.maxAzimuthAngle = Math.PI / 4;  // 45 degrees
-    
-    // Constrain vertical rotation so you can't see completely under or over it
-    controls.minPolarAngle = Math.PI / 3; // ~60 degrees
-    controls.maxPolarAngle = Math.PI / 2 + 0.1; // slightly past 90 degrees (eye level)
-    
-    controls.update();
-    controls.enablePan = false;
     
     // Raycaster for hover & click
     raycaster = new THREE.Raycaster();
@@ -268,43 +279,10 @@ function onMouseMove(event) {
     }
 }
 
-let mouseDownPos = { x: 0, y: 0 };
-
-function onMouseDown(event) {
-    mouseDownPos.x = event.clientX;
-    mouseDownPos.y = event.clientY;
-}
-
-function onMouseUp(event) {
-    const dist = Math.hypot(event.clientX - mouseDownPos.x, event.clientY - mouseDownPos.y);
-    // If moved less than 5 pixels, treat as click
-    if (dist < 5 && isHovering) {
-        toggleLaptop();
-    }
-}
-
-function toggleLaptop() {
-    if (laptopOpen) {
-        // Close it
-        gsap.to(lidGroup.rotation, {
-            x: 0.5 * Math.PI,
-            ease: "power2.inOut",
-            duration: 1.2
-        });
-        laptopOpen = false;
-    } else {
-        // Open it
-        gsap.to(lidGroup.rotation, {
-            x: -0.1 * Math.PI,
-            ease: "power2.inOut",
-            duration: 1.2
-        });
-        laptopOpen = true;
-    }
 }
 
 function render() {
-    controls.update();
+    
     
     // We must render BOTH renderers
     renderer.render(scene, camera);
