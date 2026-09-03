@@ -350,52 +350,7 @@ window.addEventListener('scroll', () => {
 // ===================================================================
 // 21. PROJECTS — LAPTOP 3D SCROLL ZOOM
 // ===================================================================
-(function initLaptopZoom() {
-    const section = document.getElementById('projects');
-    const lapWrap = document.getElementById('laptop-wrap');
 
-    if (!section || !lapWrap) return;
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Kill the CSS float animation once GSAP takes over
-    const killFloat = () => lapWrap.style.animation = 'none';
-
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: section,
-            start: 'top top',
-            end: '+=250%',   // 2.5 viewport-heights of scroll distance
-            scrub: 1.4,
-            pin: true,
-            pinSpacing: true,
-            anticipatePin: 1,
-            onEnter: killFloat,
-            onEnterBack: killFloat,
-        }
-    });
-
-    // Phase 1 (progress 0 → 0.45): subtle tilt — feels like it's swinging toward you
-    tl.to(lapWrap, {
-        rotateX: -6,
-        rotateY: 14,
-        rotateZ: -4,
-        scale: 1.1,
-        ease: 'power1.inOut',
-        duration: 0.45,
-    }, 0);
-
-    // Phase 2 (progress 0.45 → 1): flattens out and zooms large — 3D rendering into front view
-    tl.to(lapWrap, {
-        rotateX: 0,
-        rotateY: 0,
-        rotateZ: 0,
-        scale: 3.0,
-        yPercent: -62,    // push up so screen fills the viewport
-        ease: 'power3.inOut',
-        duration: 0.55,
-    }, 0.45);
-})();
 
 
 // ===================================================================
