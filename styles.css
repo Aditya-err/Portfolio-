@@ -3217,9 +3217,7 @@ body.greeting-active footer {
 /* ── HTML Screen Overlay — perfectly centered, matches zoomed WebGL screen ── */
 .laptop-screen-overlay {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    /* CSS3DObject handles true positioning, so remove left/top/transform */
     width: 882px;  /* 29.4 * 30 scale ratio */
     height: 600px; /* 20 * 30 scale ratio */
     background: transparent;

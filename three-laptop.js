@@ -6,19 +6,13 @@ const projectsSection = document.getElementById("projects");
 const htmlOverlay = document.getElementById("laptop-screen");
 
 // Globals
-let scene, camera, renderer;
+let scene, camera, renderer, cssRenderer;
 let darkPlasticMaterial, baseMetalMaterial, logoMaterial, screenMaterial, keyboardMaterial;
-let macGroup, lidGroup, bottomGroup, screenMesh, screenLight, wrapperGroup;
+let macGroup, lidGroup, bottomGroup, screenMesh, screenLight;
+let controls, raycaster, mouse;
+let laptopOpen = false;
+let isHovering = false;
 const screenSize = [29.4, 20];
-let scrollTl;
-
-// Mouse Tracking variables
-let mouseX = 0;
-let mouseY = 0;
-let targetX = 0;
-let targetY = 0;
-const windowHalfX = window.innerWidth / 2;
-const windowHalfY = window.innerHeight / 2;
 
 // Initialize
 initScene();
@@ -42,14 +36,16 @@ modelLoader.load(
 
         setupScrollAnimation();
         
-        // Start render loop
+        addScreen();
+        // Setup CSS3D HTML folders overlay
+        setupCSS3DScreen();
+        
         render();
         updateSceneSize();
         window.addEventListener("resize", updateSceneSize);
-        document.addEventListener("mousemove", onDocumentMouseMove);
-        
-        // Refresh ScrollTrigger after loading
-        ScrollTrigger.refresh();
+        window.addEventListener("mousemove", onMouseMove);
+        window.addEventListener("mousedown", onMouseDown);
+        window.addEventListener("mouseup", onMouseUp);
     },
     (xhr) => {
         console.log((xhr.loaded / xhr.total * 100) + '% loaded');
@@ -62,16 +58,36 @@ modelLoader.load(
 
 function initScene() {
     scene = new THREE.Scene();
+    
+    const container = canvasEl.parentElement;
+    
+    // WebGL Renderer
+    renderer = new THREE.WebGLRenderer({ canvas: canvasEl, antialias: true, alpha: true });
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(container.clientWidth, container.clientHeight);
 
-    camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 10, 1000);
-    camera.position.z = 80;
+    // CSS3D Renderer (For HTML folders overlay)
+    cssRenderer = new THREE.CSS3DRenderer();
+    cssRenderer.setSize(container.clientWidth, container.clientHeight);
+    cssRenderer.domElement.style.position = 'absolute';
+    cssRenderer.domElement.style.top = '0px';
+    cssRenderer.domElement.style.pointerEvents = 'none'; // Only allow pointer events on the 3D objects
+    container.appendChild(cssRenderer.domElement);
+    
+    camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 1, 1000);
+    camera.position.set(0, 0, 45); // Adjusted camera position for interactivity
 
-    renderer = new THREE.WebGLRenderer({
-        antialias: true,
-        alpha: true,
-        canvas: canvasEl
-    });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    // Controls
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.minDistance = 15;
+    controls.maxDistance = 60;
+    controls.enablePan = false;
+    
+    // Raycaster for hover & click
+    raycaster = new THREE.Raycaster();
+    mouse = new THREE.Vector2();
 
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
     scene.add(ambientLight);
@@ -83,14 +99,11 @@ function initScene() {
     lightHolder.add(light);
     lightHolder.quaternion.copy(camera.quaternion);
 
-    wrapperGroup = new THREE.Group();
-    scene.add(wrapperGroup);
-
     macGroup = new THREE.Group();
-    macGroup.position.z = -10;
-    wrapperGroup.add(macGroup);
+    macGroup.position.set(0, 0, 0); // Center the laptop
+    macGroup.rotation.x = 0.1; // Default tilt
+    scene.add(macGroup);
     
-    // Explicitly point camera at the laptop to prevent blank screen
     camera.lookAt(macGroup.position);
     
     lidGroup = new THREE.Group();
@@ -101,14 +114,15 @@ function initScene() {
 }
 
 function updateSceneSize() {
-    // Keep the canvas exactly matching its container wrap size
     const container = canvasEl.parentElement;
     const width = container.clientWidth;
     const height = container.clientHeight;
     
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
+    
     renderer.setSize(width, height);
+    cssRenderer.setSize(width, height);
 }
 
 function createMaterials() {
@@ -202,83 +216,93 @@ function addKeyboard() {
     bottomGroup.add(keyboardKeys);
 }
 
-function setupScrollAnimation() {
-    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-
-    // Ensure overlay is hidden initially
-    gsap.set(htmlOverlay, { opacity: 0 });
-
-    const stage = document.querySelector(".projects-stage");
-    scrollTl = gsap.timeline({
-        scrollTrigger: {
-            trigger: stage,
-            start: "top top",
-            end: "+=250%", // 2.5 screens of scrolling
-            scrub: 1, // Smooth scrub
-            pin: true,
-            pinSpacing: true,
-            anticipatePin: 1
-        }
-    });
-
-    // Phase 1: Open Lid & Turn on Screen
-    scrollTl.to(lidGroup.rotation, {
-        x: -0.2 * Math.PI, // Opened position
-        ease: "power2.inOut",
-        duration: 1
-    }, 0)
-    .to(screenMaterial, {
-        opacity: 0.95,
-        duration: 0.3
-    }, 0.5) // Screen turns on halfway through opening
-    .to(screenLight, {
-        intensity: 1.5,
-        duration: 0.3
-    }, 0.5);
-
-    // Phase 2: Rotate laptop to face camera dead-on and zoom in
-    scrollTl.to(macGroup.rotation, {
-        x: 0.2 * Math.PI, // Cancels out lid rotation so screen is completely flat to camera
-        y: 0,
-        z: 0,
-        ease: "power2.inOut",
-        duration: 1.5
-    }, 0.8)
-    .to(macGroup.position, {
-        y: 2, // Adjusted center position higher
-        ease: "power2.inOut",
-        duration: 1.5
-    }, 0.8)
-    .to(camera.position, {
-        z: 32, // Zoom in extremely close so screen fills viewport
-        ease: "power3.inOut",
-        duration: 1.5
-    }, 0.8);
-
-    // Phase 3: Fade in HTML folders overlay precisely when perfectly zoomed
-    scrollTl.to(htmlOverlay, {
-        opacity: 1,
-        ease: "power1.inOut",
-        duration: 0.2
-    }, 2.3);
+function setupCSS3DScreen() {
+    // 1. Get HTML overlay and make it visible
+    const htmlScreen = document.getElementById("laptop-screen");
+    htmlScreen.style.opacity = 1;
+    htmlScreen.style.pointerEvents = 'auto'; // ensure it can be clicked
+    
+    // 2. Wrap it in a CSS3DObject
+    const cssObject = new THREE.CSS3DObject(htmlScreen);
+    
+    // 3. Size and Position it on the screen
+    // The screen mesh is 29.4 x 20. The HTML element is 882 x 600.
+    // 882 / 29.4 = 30 scale ratio.
+    cssObject.scale.set(1/30, 1/30, 1/30);
+    cssObject.position.set(0, 10.5, -0.11);
+    cssObject.rotation.x = Math.PI;
+    
+    // 4. Attach CSS3DObject to the lidGroup so it moves perfectly with the lid
+    lidGroup.add(cssObject);
 }
 
-function onDocumentMouseMove(event) {
-    mouseX = (event.clientX - windowHalfX) * 0.001;
-    mouseY = (event.clientY - windowHalfY) * 0.001;
+function onMouseMove(event) {
+    // Update mouse position for raycaster
+    const container = canvasEl.parentElement;
+    const rect = container.getBoundingClientRect();
+    mouse.x = ((event.clientX - rect.left) / container.clientWidth) * 2 - 1;
+    mouse.y = -((event.clientY - rect.top) / container.clientHeight) * 2 + 1;
+    
+    raycaster.setFromCamera(mouse, camera);
+    // Raycast against the entire laptop, safely ignoring CSS3DObject
+    const intersects = raycaster.intersectObjects([macGroup], true);
+    
+    if (intersects.length > 0) {
+        if (!isHovering) {
+            isHovering = true;
+            document.body.style.cursor = 'pointer';
+        }
+    } else {
+        if (isHovering) {
+            isHovering = false;
+            document.body.style.cursor = 'default';
+        }
+    }
+}
+
+let mouseDownPos = { x: 0, y: 0 };
+
+function onMouseDown(event) {
+    mouseDownPos.x = event.clientX;
+    mouseDownPos.y = event.clientY;
+}
+
+function onMouseUp(event) {
+    const dist = Math.hypot(event.clientX - mouseDownPos.x, event.clientY - mouseDownPos.y);
+    // If moved less than 5 pixels, treat as click
+    if (dist < 5 && isHovering) {
+        toggleLaptop();
+    }
+}
+
+function toggleLaptop() {
+    if (laptopOpen) {
+        // Close it
+        gsap.to(lidGroup.rotation, {
+            x: 0.5 * Math.PI,
+            ease: "power2.inOut",
+            duration: 1.2
+        });
+        laptopOpen = false;
+    } else {
+        // Open it
+        gsap.to(lidGroup.rotation, {
+            x: -0.1 * Math.PI,
+            ease: "power2.inOut",
+            duration: 1.2
+        });
+        laptopOpen = true;
+    }
 }
 
 function render() {
-    // Parallax effect logic
-    targetX = mouseX * 0.2; // Adjust intensity
-    targetY = mouseY * 0.2;
+    controls.update();
     
-    // Smoothly interpolate current rotation towards target rotation
-    if(wrapperGroup) {
-        wrapperGroup.rotation.y += 0.05 * (targetX - wrapperGroup.rotation.y);
-        wrapperGroup.rotation.x += 0.05 * (targetY - wrapperGroup.rotation.x);
-    }
-
+    // We must render BOTH renderers
     renderer.render(scene, camera);
+    if(cssRenderer) {
+        cssRenderer.render(scene, camera);
+    }
+    
     requestAnimationFrame(render);
 }
