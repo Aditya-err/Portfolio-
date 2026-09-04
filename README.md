@@ -23,6 +23,7 @@ Welcome to my personal developer portfolio! This repository contains the source 
 - `styles.css` - The core stylesheet containing all the premium styling, layouts, and animations.
 - `script.js` - The JavaScript file driving the interactive elements, physics-based animations, and dynamic content.
 - `pdf/` - Directory containing assets such as vector SVGs (icons, background elements) and PDF certificates.
+- `assets/` - Project media assets including icons and project card graphics.
 
 ## ⚙️ Setup & Execution
 
@@ -40,7 +41,7 @@ Since this project is built using native web technologies, no complex build step
 ## 📫 Connect with Me
 
 - **Email:** gadityaprasadachary@gmail.com
-- **LinkedIn:** [G. Aditya Prasad Achary](https://linkedin.com/in/g-aditya-prasad-achary-948591264)
+- **LinkedIn:** [G. Aditya Prasad Achary](https://www.linkedin.com/in/g-aditya-prasad-achary-err/)
 - **GitHub:** [Aditya-err](https://github.com/Aditya-err)
 
 ---
