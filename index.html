@@ -16,32 +16,9 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans:wght@500;600;700&family=Noto+Sans+Devanagari:wght@500;600;700&family=Noto+Sans+JP:wght@500;700&family=Outfit:wght@400;500;600;700;800;900&family=Sacramento&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans:wght@500;600;700&family=Noto+Sans+Devanagari:wght@500;600;700&family=Noto+Sans+JP:wght@500;700&family=Outfit:wght@400;500;600;700;800;900&family=Sacramento&display=swap"
     rel="stylesheet">
-    
-  <script>
-    window.addEventListener("error", function(e) {
-      let errDiv = document.getElementById("debug-error");
-      if(!errDiv) {
-        errDiv = document.createElement("div");
-        errDiv.id = "debug-error";
-        errDiv.style.cssText = "position:fixed; top:0; left:0; width:100%; background:red; color:white; padding:20px; z-index:99999; font-size:16px; font-family:monospace;";
-        document.body.appendChild(errDiv);
-      }
-      errDiv.innerHTML += e.message + " in " + e.filename + ":" + e.lineno + "<br>";
-    });
-    window.addEventListener("unhandledrejection", function(e) {
-      let errDiv = document.getElementById("debug-error");
-      if(!errDiv) {
-        errDiv = document.createElement("div");
-        errDiv.id = "debug-error";
-        errDiv.style.cssText = "position:fixed; top:0; left:0; width:100%; background:red; color:white; padding:20px; z-index:99999; font-size:16px; font-family:monospace;";
-        document.body.appendChild(errDiv);
-      }
-      errDiv.innerHTML += "Promise Error: " + (e.reason && e.reason.message || e.reason) + "<br>";
-    });
-  </script>
-
   <!-- CodeMirror 5 — reliable code editor -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
@@ -54,7 +31,6 @@
   <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2300d4ff'/%3E%3Cstop offset='100%25' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='14' fill='url(%23g)'/%3E%3Ctext x='16' y='21' text-anchor='middle' fill='white' font-size='14' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E">
-  
 </head>
 
 <body>
@@ -375,103 +351,295 @@
       </div>
     </section>
 
-    <!-- ========== PROJECTS (LAPTOP CENTERPIECE) ========== -->
-    <section class="section reveal" id="projects">
-      <div class="projects-header">
-        <h2 class="section-title">Projects</h2>
-        <p class="projects-subtitle">Scroll to explore</p>
-      </div>
+    <!-- ========== PROJECTS (BENTO GRID) ========== -->
+  <section class="section reveal" id="projects">
+    <div class="projects-header" style="text-align: center; margin-bottom: 3rem; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; max-width: 1200px; margin-left: auto; margin-right: auto;">
+        <h2 class="section-title" style="font-size: clamp(32px, 5vw, 56px) !important; margin-bottom: 0.3rem !important; line-height: 1.1;">Projects</h2>
+        <h3 class="section-title" style="font-size: clamp(22px, 3vw, 36px) !important; letter-spacing: 3px !important; margin: 0 auto !important; opacity: 0.85; line-height: 1.2;">What I've been building</h3>
+    </div>
+    <div class="projects-split-layout">
+       <div class="projects-stack-col">
+           <div class="stacked-card active" data-index="0">
+               <div class="card-binder-bg">
+                   <div class="binder-header">
+                       <div class="binder-avatar"><img src="https://ui-avatars.com/api/?name=Aditya-err&background=0D8ABC&color=fff" alt="Aditya-err" style="border-radius:50% !important;"></div>
+                       <div class="binder-title-group">
+                           <h4 style="display:flex; align-items:center;">Aditya-err <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="color:#ffffff; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); margin-left:8px; margin-right:4px;"><path d="M12 0C5.37 0 0 5.37 0 12C0 17.31 3.435 21.82 8.205 23.385C8.805 23.495 9.03 23.125 9.03 22.805C9.03 22.52 9.015 21.585 9.015 20.585C5.67 21.31 4.965 18.97 4.965 18.97C4.42 17.585 3.635 17.215 3.635 17.215C2.54 16.465 3.715 16.48 3.715 16.48C4.925 16.565 5.56 17.72 5.56 17.72C6.63 19.55 8.37 19.02 9.065 18.71C9.17 17.925 9.49 17.395 9.845 17.09C7.175 16.785 4.37 15.75 4.37 11.145C4.37 9.83 4.84 8.75 5.6 7.92C5.48 7.615 5.065 6.395 5.72 4.745C5.72 4.745 6.725 4.425 9.015 5.975C9.97 5.71 10.99 5.575 12 5.575C13.01 5.575 14.03 5.71 14.985 5.975C17.275 4.425 18.28 4.745 18.28 4.745C18.935 6.395 18.52 7.615 18.4 7.92C19.16 8.75 19.63 9.83 19.63 11.145C19.63 15.76 16.82 16.78 14.14 17.085C14.58 17.465 14.975 18.21 14.975 19.365C14.975 21.015 14.96 22.35 14.96 22.805C14.96 23.13 15.185 23.5 15.79 23.385C20.565 21.82 24 17.31 24 12C24 5.37 18.63 0 12 0Z"/></svg></h4>
+                           <div class="binder-tagline">@Aditya-err</div>
+                       </div>
+                   </div>
+               </div>
+               <div class="msg-box-page">
+                   <div class="msg-box-header" style="display:flex; align-items:flex-start; justify-content:space-between; width:100%;">
+                       <div style="display:flex; align-items:center; gap: 1rem;">
+                           <div class="msg-project-avatar" style="flex-shrink:0;"><img src="assets/img/windpad-icon.png" alt="WindPad"></div>
+                           <div class="msg-author-info" style="display:flex; flex-direction:column; align-items:flex-start; gap:0.25rem;">
+                               <h4>WindPad</h4>
+                               <span class="msg-handle">· Productivity · Web Desktop</span>
+                           </div>
+                       </div>
+                       <div class="project-links-row" style="margin-top:0; flex-wrap:nowrap; gap: 0.5rem; justify-content:flex-end;">
+                           <a href="http://www.windpad.linkpc.net" target="_blank" class="project-link-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Visit Website</a>
+                           <a href="#" target="_blank" class="project-link-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12C0 17.31 3.435 21.82 8.205 23.385C8.805 23.495 9.03 23.125 9.03 22.805C9.03 22.52 9.015 21.585 9.015 20.585C5.67 21.31 4.965 18.97 4.965 18.97C4.42 17.585 3.635 17.215 3.635 17.215C2.54 16.465 3.715 16.48 3.715 16.48C4.925 16.565 5.56 17.72 5.56 17.72C6.63 19.55 8.37 19.02 9.065 18.71C9.17 17.925 9.49 17.395 9.845 17.09C7.175 16.785 4.37 15.75 4.37 11.145C4.37 9.83 4.84 8.75 5.6 7.92C5.48 7.615 5.065 6.395 5.72 4.745C5.72 4.745 6.725 4.425 9.015 5.975C9.97 5.71 10.99 5.575 12 5.575C13.01 5.575 14.03 5.71 14.985 5.975C17.275 4.425 18.28 4.745 18.28 4.745C18.935 6.395 18.52 7.615 18.4 7.92C19.16 8.75 19.63 9.83 19.63 11.145C19.63 15.76 16.82 16.78 14.14 17.085C14.58 17.465 14.975 18.21 14.975 19.365C14.975 21.015 14.96 22.35 14.96 22.805C14.96 23.13 15.185 23.5 15.79 23.385C20.565 21.82 24 17.31 24 12C24 5.37 18.63 0 12 0Z"/></svg> GitHub Repo</a>
+                       </div>
+                   </div>
+                   <div class="msg-box-body">
+                       <p class="msg-box-desc">A modern productivity application designed for a smooth and distraction-free writing experience.</p>
+                       <ul class="project-bullets">
+                           <li>Rich text editing & document management</li>
+                           <li>Clean, responsive desktop UI</li>
+                           <li>Local-first productivity workflow</li>
+                       </ul>
+                   </div>
+                   <div class="paperclip-wrapper">
+    <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="paperclip-svg">
+        <path d="M 60,20 L 30,50 C 20,60 20,70 30,80 C 40,90 50,90 60,80 L 85,55 C 90,50 90,40 85,35 C 80,30 70,30 65,35 L 40,60 C 37,63 37,67 40,70 C 43,73 47,73 50,70 L 70,50" stroke="#d1d5db" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(3px 5px 4px rgba(0,0,0,0.4));"/>
+    </svg>
+    </div>
+               </div>
+           </div>
+           <div class="stacked-card stacked" data-index="1">
+               <div class="card-binder-bg">
+                   <div class="binder-header">
+                       <div class="binder-avatar"><img src="https://ui-avatars.com/api/?name=Aditya-err&background=0D8ABC&color=fff" alt="Aditya-err" style="border-radius:50% !important;"></div>
+                       <div class="binder-title-group">
+                           <h4 style="display:flex; align-items:center;">Aditya-err <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="color:#ffffff; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); margin-left:8px; margin-right:4px;"><path d="M12 0C5.37 0 0 5.37 0 12C0 17.31 3.435 21.82 8.205 23.385C8.805 23.495 9.03 23.125 9.03 22.805C9.03 22.52 9.015 21.585 9.015 20.585C5.67 21.31 4.965 18.97 4.965 18.97C4.42 17.585 3.635 17.215 3.635 17.215C2.54 16.465 3.715 16.48 3.715 16.48C4.925 16.565 5.56 17.72 5.56 17.72C6.63 19.55 8.37 19.02 9.065 18.71C9.17 17.925 9.49 17.395 9.845 17.09C7.175 16.785 4.37 15.75 4.37 11.145C4.37 9.83 4.84 8.75 5.6 7.92C5.48 7.615 5.065 6.395 5.72 4.745C5.72 4.745 6.725 4.425 9.015 5.975C9.97 5.71 10.99 5.575 12 5.575C13.01 5.575 14.03 5.71 14.985 5.975C17.275 4.425 18.28 4.745 18.28 4.745C18.935 6.395 18.52 7.615 18.4 7.92C19.16 8.75 19.63 9.83 19.63 11.145C19.63 15.76 16.82 16.78 14.14 17.085C14.58 17.465 14.975 18.21 14.975 19.365C14.975 21.015 14.96 22.35 14.96 22.805C14.96 23.13 15.185 23.5 15.79 23.385C20.565 21.82 24 17.31 24 12C24 5.37 18.63 0 12 0Z"/></svg></h4>
+                           <div class="binder-tagline">@Aditya-err</div>
+                       </div>
+                   </div>
+               </div>
+               <div class="msg-box-page">
+                   <div class="msg-box-header" style="display:flex; align-items:flex-start; justify-content:space-between; width:100%;">
+                       <div style="display:flex; align-items:center; gap: 1rem;">
+                           <div class="msg-project-avatar" style="flex-shrink:0;"><img src="assets/img/ai-face.png" alt="Face Recognition"></div>
+                           <div class="msg-author-info" style="display:flex; flex-direction:column; align-items:flex-start; gap:0.25rem;">
+                               <h4>AI Face Recognition Attendance</h4>
+                               <span class="msg-handle">· AI · Computer Vision</span>
+                           </div>
+                       </div>
+                       <div class="project-links-row" style="margin-top:0; flex-wrap:nowrap; gap: 0.5rem; justify-content:flex-end;">
+                           <a href="#" target="_blank" class="project-link-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12C0 17.31 3.435 21.82 8.205 23.385C8.805 23.495 9.03 23.125 9.03 22.805C9.03 22.52 9.015 21.585 9.015 20.585C5.67 21.31 4.965 18.97 4.965 18.97C4.42 17.585 3.635 17.215 3.635 17.215C2.54 16.465 3.715 16.48 3.715 16.48C4.925 16.565 5.56 17.72 5.56 17.72C6.63 19.55 8.37 19.02 9.065 18.71C9.17 17.925 9.49 17.395 9.845 17.09C7.175 16.785 4.37 15.75 4.37 11.145C4.37 9.83 4.84 8.75 5.6 7.92C5.48 7.615 5.065 6.395 5.72 4.745C5.72 4.745 6.725 4.425 9.015 5.975C9.97 5.71 10.99 5.575 12 5.575C13.01 5.575 14.03 5.71 14.985 5.975C17.275 4.425 18.28 4.745 18.28 4.745C18.935 6.395 18.52 7.615 18.4 7.92C19.16 8.75 19.63 9.83 19.63 11.145C19.63 15.76 16.82 16.78 14.14 17.085C14.58 17.465 14.975 18.21 14.975 19.365C14.975 21.015 14.96 22.35 14.96 22.805C14.96 23.13 15.185 23.5 15.79 23.385C20.565 21.82 24 17.31 24 12C24 5.37 18.63 0 12 0Z"/></svg> GitHub Repo</a>
+                       </div>
+                   </div>
+                   <div class="msg-box-body">
+                       <p class="msg-box-desc">An AI-powered attendance system that automates identity verification and attendance tracking.</p>
+                       <ul class="project-bullets">
+                           <li>Real-time face detection & recognition</li>
+                           <li>Automated attendance logging</li>
+                           <li>Simple dashboard for attendance records</li>
+                       </ul>
+                   </div>
+                   <div class="paperclip-wrapper">
+    <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="paperclip-svg">
+        <path d="M 60,20 L 30,50 C 20,60 20,70 30,80 C 40,90 50,90 60,80 L 85,55 C 90,50 90,40 85,35 C 80,30 70,30 65,35 L 40,60 C 37,63 37,67 40,70 C 43,73 47,73 50,70 L 70,50" stroke="#d1d5db" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(3px 5px 4px rgba(0,0,0,0.4));"/>
+    </svg>
+    </div>
+               </div>
+           </div>
+           <div class="stacked-card stacked" data-index="2">
+               <div class="card-binder-bg">
+                   <div class="binder-header">
+                       <div class="binder-avatar"><img src="https://ui-avatars.com/api/?name=Aditya-err&background=0D8ABC&color=fff" alt="Aditya-err" style="border-radius:50% !important;"></div>
+                       <div class="binder-title-group">
+                           <h4 style="display:flex; align-items:center;">Aditya-err <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="color:#ffffff; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); margin-left:8px; margin-right:4px;"><path d="M12 0C5.37 0 0 5.37 0 12C0 17.31 3.435 21.82 8.205 23.385C8.805 23.495 9.03 23.125 9.03 22.805C9.03 22.52 9.015 21.585 9.015 20.585C5.67 21.31 4.965 18.97 4.965 18.97C4.42 17.585 3.635 17.215 3.635 17.215C2.54 16.465 3.715 16.48 3.715 16.48C4.925 16.565 5.56 17.72 5.56 17.72C6.63 19.55 8.37 19.02 9.065 18.71C9.17 17.925 9.49 17.395 9.845 17.09C7.175 16.785 4.37 15.75 4.37 11.145C4.37 9.83 4.84 8.75 5.6 7.92C5.48 7.615 5.065 6.395 5.72 4.745C5.72 4.745 6.725 4.425 9.015 5.975C9.97 5.71 10.99 5.575 12 5.575C13.01 5.575 14.03 5.71 14.985 5.975C17.275 4.425 18.28 4.745 18.28 4.745C18.935 6.395 18.52 7.615 18.4 7.92C19.16 8.75 19.63 9.83 19.63 11.145C19.63 15.76 16.82 16.78 14.14 17.085C14.58 17.465 14.975 18.21 14.975 19.365C14.975 21.015 14.96 22.35 14.96 22.805C14.96 23.13 15.185 23.5 15.79 23.385C20.565 21.82 24 17.31 24 12C24 5.37 18.63 0 12 0Z"/></svg></h4>
+                           <div class="binder-tagline">@Aditya-err</div>
+                       </div>
+                   </div>
+               </div>
+               <div class="msg-box-page">
+                   <div class="msg-box-header" style="display:flex; align-items:flex-start; justify-content:space-between; width:100%;">
+                       <div style="display:flex; align-items:center; gap: 1rem;">
+                           <div class="msg-project-avatar" style="flex-shrink:0;"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100 100" class="custom-avatar-svg"><path fill="#ee3e54" d="M13 27A2 2 0 1 0 13 31A2 2 0 1 0 13 27Z"></path><path fill="#f1bc19" d="M77 12A1 1 0 1 0 77 14A1 1 0 1 0 77 12Z"></path><path fill="#fce0a2" d="M50 13A37 37 0 1 0 50 87A37 37 0 1 0 50 13Z"></path><path fill="#f1bc19" d="M83 11A4 4 0 1 0 83 19A4 4 0 1 0 83 11Z"></path><path fill="#ee3e54" d="M87 22A2 2 0 1 0 87 26A2 2 0 1 0 87 22Z"></path><path fill="#fbcd59" d="M81 74A2 2 0 1 0 81 78 2 2 0 1 0 81 74zM15 59A4 4 0 1 0 15 67 4 4 0 1 0 15 59z"></path><path fill="#ee3e54" d="M25 85A2 2 0 1 0 25 89A2 2 0 1 0 25 85Z"></path><path fill="#fff" d="M18.5 51A2.5 2.5 0 1 0 18.5 56A2.5 2.5 0 1 0 18.5 51Z"></path><path fill="#f1bc19" d="M21 66A1 1 0 1 0 21 68A1 1 0 1 0 21 66Z"></path><path fill="#fff" d="M80 33A1 1 0 1 0 80 35A1 1 0 1 0 80 33Z"></path><g><path fill="#cdcbbd" d="M29.509,69.3c-0.503,0-1.126-0.145-1.482-1.275c-0.274-0.872-0.273-1.945-0.272-2.655L27.7,37.796v-3.822c0-1.694,1.321-3.072,2.945-3.072h17.646c1.659,0,3.009,1.455,3.009,3.244v1.459c0,1.244,0.968,2.257,2.157,2.257h16.086c0.417,0,0.757,0.385,0.757,0.857v23.565c0,0.334,0.013,0.748,0.026,1.214c0.05,1.703,0.131,4.46-0.436,5.802H29.509z"></path><path fill="#472b29" d="M48.291,31.601c1.273,0,2.309,1.141,2.309,2.544v1.458c0,1.631,1.282,2.957,2.857,2.957l16.076-0.002c0.011,0.005,0.067,0.053,0.067,0.159v23.566c0,0.339,0.012,0.761,0.026,1.234c0.038,1.287,0.11,3.738-0.236,5.082h-39.88c-0.266,0-0.567,0-0.815-0.786c-0.242-0.769-0.241-1.777-0.241-2.444l0-0.092L28.4,37.797v-3.824c0-1.308,1.007-2.372,2.245-2.372H48.291 M48.291,30.201H30.645c-2.005,0-3.645,1.698-3.645,3.772v3.824l0.054,27.484C27.054,66.704,27,70,29.509,70h40.804C71.368,68.355,71,64.102,71,62.285V38.719c0-0.86-0.652-1.557-1.457-1.557H53.457c-0.805,0-1.457-0.697-1.457-1.557v-1.458C52,31.977,50.331,30.201,48.291,30.201L48.291,30.201z"></path></g><g><path fill="#fdfcee" d="M29.594,69.3c-0.061-0.007-0.15-0.105-0.214-0.215c1.214-0.343,1.32-2.538,1.32-5.146V42.231c0-0.293,0.229-0.531,0.512-0.531h41.576c0.282,0,0.512,0.238,0.512,0.531v23.582c0,1.923-1.534,3.486-3.42,3.486H29.594z"></path><path fill="#472b29" d="M72.6,42.4v23.413c0,1.537-1.22,2.787-2.72,2.787H30.849c0.551-1.191,0.551-3.047,0.551-4.66V42.4H72.6 M72.788,41H31.212C30.542,41,30,41.551,30,42.231V63.94c0,2.779-0.188,4.492-0.974,4.492c-0.85,0-0.282,1.568,0.568,1.568H69.88c2.275,0,4.12-1.874,4.12-4.187V42.231C74,41.551,73.458,41,72.788,41L72.788,41z"></path></g><g><path fill="#472b29" d="M41.5,35h-11c-0.276,0-0.5-0.224-0.5-0.5s0.224-0.5,0.5-0.5h11c0.276,0,0.5,0.224,0.5,0.5S41.776,35,41.5,35z"></path></g><g><path fill="#472b29" d="M48.5,35h-4c-0.276,0-0.5-0.224-0.5-0.5s0.224-0.5,0.5-0.5h4c0.276,0,0.5,0.224,0.5,0.5S48.776,35,48.5,35z"></path></g><g><path fill="#472b29" d="M51.5,53h-14c-0.276,0-0.5-0.224-0.5-0.5v-6c0-0.276,0.224-0.5,0.5-0.5h14c0.276,0,0.5,0.224,0.5,0.5v6C52,52.776,51.776,53,51.5,53z M38,52h13v-5H38V52z"></path></g></svg></div>
+                           <div class="msg-author-info" style="display:flex; flex-direction:column; align-items:flex-start; gap:0.25rem;">
+                               <h4>Exploratory Analytics & Recommender</h4>
+                               <span class="msg-handle">· Data Science · Machine Learning</span>
+                           </div>
+                       </div>
+                       <div class="project-links-row" style="margin-top:0; flex-wrap:nowrap; gap: 0.5rem; justify-content:flex-end;">
+                           <a href="#" target="_blank" class="project-link-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12C0 17.31 3.435 21.82 8.205 23.385C8.805 23.495 9.03 23.125 9.03 22.805C9.03 22.52 9.015 21.585 9.015 20.585C5.67 21.31 4.965 18.97 4.965 18.97C4.42 17.585 3.635 17.215 3.635 17.215C2.54 16.465 3.715 16.48 3.715 16.48C4.925 16.565 5.56 17.72 5.56 17.72C6.63 19.55 8.37 19.02 9.065 18.71C9.17 17.925 9.49 17.395 9.845 17.09C7.175 16.785 4.37 15.75 4.37 11.145C4.37 9.83 4.84 8.75 5.6 7.92C5.48 7.615 5.065 6.395 5.72 4.745C5.72 4.745 6.725 4.425 9.015 5.975C9.97 5.71 10.99 5.575 12 5.575C13.01 5.575 14.03 5.71 14.985 5.975C17.275 4.425 18.28 4.745 18.28 4.745C18.935 6.395 18.52 7.615 18.4 7.92C19.16 8.75 19.63 9.83 19.63 11.145C19.63 15.76 16.82 16.78 14.14 17.085C14.58 17.465 14.975 18.21 14.975 19.365C14.975 21.015 14.96 22.35 14.96 22.805C14.96 23.13 15.185 23.5 15.79 23.385C20.565 21.82 24 17.31 24 12C24 5.37 18.63 0 12 0Z"/></svg> GitHub Repo</a>
+                       </div>
+                   </div>
+                   <div class="msg-box-body">
+                       <p class="msg-box-desc">A data-driven application combining exploratory analysis with personalized recommendations.</p>
+                       <ul class="project-bullets">
+                           <li>Interactive data exploration</li>
+                           <li>Pattern & trend discovery</li>
+                           <li>Recommendation generation</li>
+                       </ul>
+                   </div>
+                   <div class="paperclip-wrapper">
+    <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="paperclip-svg">
+        <path d="M 60,20 L 30,50 C 20,60 20,70 30,80 C 40,90 50,90 60,80 L 85,55 C 90,50 90,40 85,35 C 80,30 70,30 65,35 L 40,60 C 37,63 37,67 40,70 C 43,73 47,73 50,70 L 70,50" stroke="#d1d5db" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(3px 5px 4px rgba(0,0,0,0.4));"/>
+    </svg>
+    </div>
+               </div>
+           </div>
+           <div class="stacked-card stacked" data-index="3">
+               <div class="card-binder-bg">
+                   <div class="binder-header">
+                       <div class="binder-avatar"><img src="https://ui-avatars.com/api/?name=Aditya-err&background=0D8ABC&color=fff" alt="Aditya-err" style="border-radius:50% !important;"></div>
+                       <div class="binder-title-group">
+                           <h4 style="display:flex; align-items:center;">Aditya-err <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="color:#ffffff; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); margin-left:8px; margin-right:4px;"><path d="M12 0C5.37 0 0 5.37 0 12C0 17.31 3.435 21.82 8.205 23.385C8.805 23.495 9.03 23.125 9.03 22.805C9.03 22.52 9.015 21.585 9.015 20.585C5.67 21.31 4.965 18.97 4.965 18.97C4.42 17.585 3.635 17.215 3.635 17.215C2.54 16.465 3.715 16.48 3.715 16.48C4.925 16.565 5.56 17.72 5.56 17.72C6.63 19.55 8.37 19.02 9.065 18.71C9.17 17.925 9.49 17.395 9.845 17.09C7.175 16.785 4.37 15.75 4.37 11.145C4.37 9.83 4.84 8.75 5.6 7.92C5.48 7.615 5.065 6.395 5.72 4.745C5.72 4.745 6.725 4.425 9.015 5.975C9.97 5.71 10.99 5.575 12 5.575C13.01 5.575 14.03 5.71 14.985 5.975C17.275 4.425 18.28 4.745 18.28 4.745C18.935 6.395 18.52 7.615 18.4 7.92C19.16 8.75 19.63 9.83 19.63 11.145C19.63 15.76 16.82 16.78 14.14 17.085C14.58 17.465 14.975 18.21 14.975 19.365C14.975 21.015 14.96 22.35 14.96 22.805C14.96 23.13 15.185 23.5 15.79 23.385C20.565 21.82 24 17.31 24 12C24 5.37 18.63 0 12 0Z"/></svg></h4>
+                           <div class="binder-tagline">@Aditya-err</div>
+                       </div>
+                   </div>
+               </div>
+               <div class="msg-box-page">
+                   <div class="msg-box-header" style="display:flex; align-items:flex-start; justify-content:space-between; width:100%;">
+                       <div style="display:flex; align-items:center; gap: 1rem;">
+                           <div class="msg-project-avatar" style="flex-shrink:0;"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 48 48" class="custom-avatar-svg"><path fill="#ff7501" d="M35,18v23h5c0-1,0-1.748,0-2.511V18H35z" opacity=".1"></path><path fill="#ff7501" d="M34.25,18v23h5.563c-0.452-0.799-0.563-1.748-0.563-2.511V18H34.25z" opacity=".2"></path><path fill="#ff7501" d="M33.5,18v23h6.126c-0.905-0.598-1.126-1.748-1.126-2.511V18H33.5z" opacity=".3"></path><path fill="#ff7501" d="M32.75,18v23h6.69c-1.357-0.397-1.69-1.748-1.69-2.511V18H32.75z" opacity=".4"></path><path fill="#ff7501" d="M32,18v23h7.253C37.443,40.804,37,39.252,37,38.489V18H32z" opacity=".5"></path><linearGradient id="bulkGrad1" x1="25.776" x2="16.884" y1="42.294" y2="14.173" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ff6201"></stop><stop offset=".689" stop-color="#fdbd19"></stop><stop offset="1" stop-color="#fce724"></stop></linearGradient><path fill="url(#bulkGrad1)" d="M35,11H21l-4-4H6C4.9,7,4,7.9,4,9v29.068C4,39.687,5.313,41,6.932,41h32.524C38.12,41.016,37,39.875,37,38.489V13C37,11.9,36.1,11,35,11z"></path><path fill="#fe910d" d="M39.198,41C37.988,40.817,37,39.875,37,38.481V18v-2H12c-2.206,0-4,1.794-4,4v18 c0,1-0.626,3-1,3h30H39.198z" opacity=".1"></path><path fill="#fe910d" d="M37,41h2.198C37.988,40.817,37,39.875,37,38.481V18v-1.667H12.369 c-0.76,0-1.831,0.256-2.393,0.686C8.997,17.629,8.333,18.739,8.333,20v17.941c0,0.093-0.007,0.256-0.019,0.367 c-0.096,1.06-0.617,2.516-1.014,2.601C7.29,40.916,7.28,40.949,7.269,41H37z" opacity=".2"></path><path fill="#fe910d" d="M37,41h2.198C37.988,40.817,37,39.875,37,38.481V18v-1.333H12.738 c-0.608,0-1.908,0.205-2.357,0.549C9.378,17.703,8.667,18.771,8.667,20v17.882c0,0.075-0.005,0.276-0.015,0.364 c-0.077,1.066-0.588,2.4-1.05,2.571C7.571,40.839,7.539,40.911,7.506,41H37z" opacity=".3"></path><path fill="#fe910d" d="M37,41h2.198C37.988,40.817,37,39.875,37,38.481V18v-1H13.108 c-0.456,0-1.985,0.154-2.322,0.412C9.758,17.777,9,18.803,9,20v17.823c0,0.056-0.004,0.295-0.011,0.362 c-0.057,1.073-0.559,2.285-1.087,2.541c-0.063,0.044-0.13,0.146-0.2,0.274H37z" opacity=".4"></path><path fill="#fe910d" d="M37,41h2.198C37.988,40.817,37,39.875,37,38.481V18v-0.667H13.477 c-0.304,0-2.062,0.102-2.286,0.274C10.139,17.852,9.333,18.835,9.333,20v17.764c0,0.037-0.003,0.315-0.007,0.359 c-0.038,1.079-0.529,2.17-1.123,2.511C8.093,40.712,7.974,40.85,7.848,41H37z" opacity=".5"></path><path fill="#fe910d" d="M37,41h2.198C37.988,40.817,37,39.875,37,38.481V18v-0.333H13.846 c-0.152,0-2.139,0.051-2.251,0.137C10.52,17.926,9.667,18.868,9.667,20v17.705c0,0.019-0.001,0.335-0.004,0.357 c-0.019,1.086-0.5,2.055-1.16,2.481C8.314,40.677,8.101,40.849,7.875,41H37z" opacity=".6"></path><linearGradient id="bulkGrad2" x1="-107.768" x2="-85.275" y1="43.07" y2="16.06" gradientTransform="matrix(-1 0 0 1 -71 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f4805d" stop-opacity=".4"></stop><stop offset="1" stop-color="#ffcfae" stop-opacity=".2"></stop></linearGradient><path fill="url(#bulkGrad2)" d="M13,18h29c1.1,0,2,0.9,2,2v18.583C44,39.918,42.918,41,41.583,41H8c1.617,0,3-1.149,3-3V20C11,18.9,11.9,18,13,18z"></path><linearGradient id="bulkGrad3" x1="17.767" x2="46.142" y1="24.12" y2="44.336" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="ivory" stop-opacity=".2"></stop><stop offset="1" stop-color="#f4805d" stop-opacity=".4"></stop></linearGradient><path fill="url(#bulkGrad3)" d="M42,18.5c0.827,0,1.5,0.673,1.5,1.5v18.583c0,1.057-0.86,1.917-1.917,1.917H10.521c0.615-0.621,0.979-1.492,0.979-2.5V20c0-0.827,0.673-1.5,1.5-1.5H42 M42,18H13c-1.1,0-2,0.9-2,2v18c0,1.851-1.383,3-3,3h33.583C42.918,41,44,39.918,44,38.583V20C44,18.9,43.1,18,42,18L42,18z"></path></svg></div>
+                           <div class="msg-author-info" style="display:flex; flex-direction:column; align-items:flex-start; gap:0.25rem;">
+                               <h4>Bulk File Automator</h4>
+                               <span class="msg-handle">· Python · Automation</span>
+                           </div>
+                       </div>
+                       <div class="project-links-row" style="margin-top:0; flex-wrap:nowrap; gap: 0.5rem; justify-content:flex-end;">
+                           <a href="#" target="_blank" class="project-link-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12C0 17.31 3.435 21.82 8.205 23.385C8.805 23.495 9.03 23.125 9.03 22.805C9.03 22.52 9.015 21.585 9.015 20.585C5.67 21.31 4.965 18.97 4.965 18.97C4.42 17.585 3.635 17.215 3.635 17.215C2.54 16.465 3.715 16.48 3.715 16.48C4.925 16.565 5.56 17.72 5.56 17.72C6.63 19.55 8.37 19.02 9.065 18.71C9.17 17.925 9.49 17.395 9.845 17.09C7.175 16.785 4.37 15.75 4.37 11.145C4.37 9.83 4.84 8.75 5.6 7.92C5.48 7.615 5.065 6.395 5.72 4.745C5.72 4.745 6.725 4.425 9.015 5.975C9.97 5.71 10.99 5.575 12 5.575C13.01 5.575 14.03 5.71 14.985 5.975C17.275 4.425 18.28 4.745 18.28 4.745C18.935 6.395 18.52 7.615 18.4 7.92C19.16 8.75 19.63 9.83 19.63 11.145C19.63 15.76 16.82 16.78 14.14 17.085C14.58 17.465 14.975 18.21 14.975 19.365C14.975 21.015 14.96 22.35 14.96 22.805C14.96 23.13 15.185 23.5 15.79 23.385C20.565 21.82 24 17.31 24 12C24 5.37 18.63 0 12 0Z"/></svg> GitHub Repo</a>
+                       </div>
+                   </div>
+                   <div class="msg-box-body">
+                       <p class="msg-box-desc">A Python-based automation tool for managing and processing large numbers of files efficiently.</p>
+                       <ul class="project-bullets">
+                           <li>Bulk rename & organize files</li>
+                           <li>Automated folder operations</li>
+                           <li>Reduces repetitive manual tasks</li>
+                       </ul>
+                   </div>
+                   <div class="paperclip-wrapper">
+    <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="paperclip-svg">
+        <path d="M 60,20 L 30,50 C 20,60 20,70 30,80 C 40,90 50,90 60,80 L 85,55 C 90,50 90,40 85,35 C 80,30 70,30 65,35 L 40,60 C 37,63 37,67 40,70 C 43,73 47,73 50,70 L 70,50" stroke="#d1d5db" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(3px 5px 4px rgba(0,0,0,0.4));"/>
+    </svg>
+    </div>
+               </div>
+           </div>
+           <div class="stacked-card stacked" data-index="4">
+               <div class="card-binder-bg">
+                   <div class="binder-header">
+                       <div class="binder-avatar"><img src="https://ui-avatars.com/api/?name=Aditya-err&background=0D8ABC&color=fff" alt="Aditya-err" style="border-radius:50% !important;"></div>
+                       <div class="binder-title-group">
+                           <h4 style="display:flex; align-items:center;">Aditya-err <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="color:#ffffff; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); margin-left:8px; margin-right:4px;"><path d="M12 0C5.37 0 0 5.37 0 12C0 17.31 3.435 21.82 8.205 23.385C8.805 23.495 9.03 23.125 9.03 22.805C9.03 22.52 9.015 21.585 9.015 20.585C5.67 21.31 4.965 18.97 4.965 18.97C4.42 17.585 3.635 17.215 3.635 17.215C2.54 16.465 3.715 16.48 3.715 16.48C4.925 16.565 5.56 17.72 5.56 17.72C6.63 19.55 8.37 19.02 9.065 18.71C9.17 17.925 9.49 17.395 9.845 17.09C7.175 16.785 4.37 15.75 4.37 11.145C4.37 9.83 4.84 8.75 5.6 7.92C5.48 7.615 5.065 6.395 5.72 4.745C5.72 4.745 6.725 4.425 9.015 5.975C9.97 5.71 10.99 5.575 12 5.575C13.01 5.575 14.03 5.71 14.985 5.975C17.275 4.425 18.28 4.745 18.28 4.745C18.935 6.395 18.52 7.615 18.4 7.92C19.16 8.75 19.63 9.83 19.63 11.145C19.63 15.76 16.82 16.78 14.14 17.085C14.58 17.465 14.975 18.21 14.975 19.365C14.975 21.015 14.96 22.35 14.96 22.805C14.96 23.13 15.185 23.5 15.79 23.385C20.565 21.82 24 17.31 24 12C24 5.37 18.63 0 12 0Z"/></svg></h4>
+                           <div class="binder-tagline">@Aditya-err</div>
+                       </div>
+                   </div>
+               </div>
+               <div class="msg-box-page">
+                   <div class="msg-box-header" style="display:flex; align-items:flex-start; justify-content:space-between; width:100%;">
+                       <div style="display:flex; align-items:center; gap: 1rem;">
+                           <div class="msg-project-avatar" style="flex-shrink:0;"><img src="assets/img/doc-intelligence.png" alt="Doc Intelligence"></div>
+                           <div class="msg-author-info" style="display:flex; flex-direction:column; align-items:flex-start; gap:0.25rem;">
+                               <h4>RAG Document Intelligence</h4>
+                               <span class="msg-handle">· AI · NLP · RAG</span>
+                           </div>
+                       </div>
+                       <div class="project-links-row" style="margin-top:0; flex-wrap:nowrap; gap: 0.5rem; justify-content:flex-end;">
+                           <a href="#" target="_blank" class="project-link-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12C0 17.31 3.435 21.82 8.205 23.385C8.805 23.495 9.03 23.125 9.03 22.805C9.03 22.52 9.015 21.585 9.015 20.585C5.67 21.31 4.965 18.97 4.965 18.97C4.42 17.585 3.635 17.215 3.635 17.215C2.54 16.465 3.715 16.48 3.715 16.48C4.925 16.565 5.56 17.72 5.56 17.72C6.63 19.55 8.37 19.02 9.065 18.71C9.17 17.925 9.49 17.395 9.845 17.09C7.175 16.785 4.37 15.75 4.37 11.145C4.37 9.83 4.84 8.75 5.6 7.92C5.48 7.615 5.065 6.395 5.72 4.745C5.72 4.745 6.725 4.425 9.015 5.975C9.97 5.71 10.99 5.575 12 5.575C13.01 5.575 14.03 5.71 14.985 5.975C17.275 4.425 18.28 4.745 18.28 4.745C18.935 6.395 18.52 7.615 18.4 7.92C19.16 8.75 19.63 9.83 19.63 11.145C19.63 15.76 16.82 16.78 14.14 17.085C14.58 17.465 14.975 18.21 14.975 19.365C14.975 21.015 14.96 22.35 14.96 22.805C14.96 23.13 15.185 23.5 15.79 23.385C20.565 21.82 24 17.31 24 12C24 5.37 18.63 0 12 0Z"/></svg> GitHub Repo</a>
+                       </div>
+                   </div>
+                   <div class="msg-box-body">
+                       <p class="msg-box-desc">An AI-powered document intelligence system for querying and extracting information from your own documents.</p>
+                       <ul class="project-bullets">
+                           <li>RAG-based question answering</li>
+                           <li>Context-aware document retrieval</li>
+                           <li>Supports structured & unstructured data</li>
+                       </ul>
+                   </div>
+                   <div class="paperclip-wrapper">
+    <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="paperclip-svg">
+        <path d="M 60,20 L 30,50 C 20,60 20,70 30,80 C 40,90 50,90 60,80 L 85,55 C 90,50 90,40 85,35 C 80,30 70,30 65,35 L 40,60 C 37,63 37,67 40,70 C 43,73 47,73 50,70 L 70,50" stroke="#d1d5db" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(3px 5px 4px rgba(0,0,0,0.4));"/>
+    </svg>
+    </div>
+               </div>
+           </div>
+           <div class="stacked-card stacked" data-index="5">
+               <div class="card-binder-bg">
+                   <div class="binder-header">
+                       <div class="binder-avatar"><img src="https://ui-avatars.com/api/?name=Aditya-err&background=0D8ABC&color=fff" alt="Aditya-err" style="border-radius:50% !important;"></div>
+                       <div class="binder-title-group">
+                           <h4 style="display:flex; align-items:center;">Aditya-err <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="color:#ffffff; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); margin-left:8px; margin-right:4px;"><path d="M12 0C5.37 0 0 5.37 0 12C0 17.31 3.435 21.82 8.205 23.385C8.805 23.495 9.03 23.125 9.03 22.805C9.03 22.52 9.015 21.585 9.015 20.585C5.67 21.31 4.965 18.97 4.965 18.97C4.42 17.585 3.635 17.215 3.635 17.215C2.54 16.465 3.715 16.48 3.715 16.48C4.925 16.565 5.56 17.72 5.56 17.72C6.63 19.55 8.37 19.02 9.065 18.71C9.17 17.925 9.49 17.395 9.845 17.09C7.175 16.785 4.37 15.75 4.37 11.145C4.37 9.83 4.84 8.75 5.6 7.92C5.48 7.615 5.065 6.395 5.72 4.745C5.72 4.745 6.725 4.425 9.015 5.975C9.97 5.71 10.99 5.575 12 5.575C13.01 5.575 14.03 5.71 14.985 5.975C17.275 4.425 18.28 4.745 18.28 4.745C18.935 6.395 18.52 7.615 18.4 7.92C19.16 8.75 19.63 9.83 19.63 11.145C19.63 15.76 16.82 16.78 14.14 17.085C14.58 17.465 14.975 18.21 14.975 19.365C14.975 21.015 14.96 22.35 14.96 22.805C14.96 23.13 15.185 23.5 15.79 23.385C20.565 21.82 24 17.31 24 12C24 5.37 18.63 0 12 0Z"/></svg></h4>
+                           <div class="binder-tagline">@Aditya-err</div>
+                       </div>
+                   </div>
+               </div>
+               <div class="msg-box-page">
+                   <div class="msg-box-header" style="display:flex; align-items:flex-start; justify-content:space-between; width:100%;">
+                       <div style="display:flex; align-items:center; gap: 1rem;">
+                           <div class="msg-project-avatar" style="flex-shrink:0;"><img src="assets/img/ai-automation.png" alt="AI Engine"></div>
+                           <div class="msg-author-info" style="display:flex; flex-direction:column; align-items:flex-start; gap:0.25rem;">
+                               <h4>AI Automation Engine</h4>
+                               <span class="msg-handle">· Agents · Pipelines · Autonomous Tasks</span>
+                           </div>
+                       </div>
+                       <div class="project-links-row" style="margin-top:0; flex-wrap:nowrap; gap: 0.5rem; justify-content:flex-end;">
+                           <a href="#" target="_blank" class="project-link-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12C0 17.31 3.435 21.82 8.205 23.385C8.805 23.495 9.03 23.125 9.03 22.805C9.03 22.52 9.015 21.585 9.015 20.585C5.67 21.31 4.965 18.97 4.965 18.97C4.42 17.585 3.635 17.215 3.635 17.215C2.54 16.465 3.715 16.48 3.715 16.48C4.925 16.565 5.56 17.72 5.56 17.72C6.63 19.55 8.37 19.02 9.065 18.71C9.17 17.925 9.49 17.395 9.845 17.09C7.175 16.785 4.37 15.75 4.37 11.145C4.37 9.83 4.84 8.75 5.6 7.92C5.48 7.615 5.065 6.395 5.72 4.745C5.72 4.745 6.725 4.425 9.015 5.975C9.97 5.71 10.99 5.575 12 5.575C13.01 5.575 14.03 5.71 14.985 5.975C17.275 4.425 18.28 4.745 18.28 4.745C18.935 6.395 18.52 7.615 18.4 7.92C19.16 8.75 19.63 9.83 19.63 11.145C19.63 15.76 16.82 16.78 14.14 17.085C14.58 17.465 14.975 18.21 14.975 19.365C14.975 21.015 14.96 22.35 14.96 22.805C14.96 23.13 15.185 23.5 15.79 23.385C20.565 21.82 24 17.31 24 12C24 5.37 18.63 0 12 0Z"/></svg> GitHub Repo</a>
+                       </div>
+                   </div>
+                   <div class="msg-box-body">
+                       <p class="msg-box-desc">An AI-driven automation system designed to connect intelligent agents with real-world workflows.</p>
+                       <ul class="project-bullets">
+                           <li>AI-powered task automation</li>
+                           <li>Tool & workflow integration</li>
+                           <li>Agent-based execution pipeline</li>
+                       </ul>
+                   </div>
+                   <div class="paperclip-wrapper">
+    <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="paperclip-svg">
+        <path d="M 60,20 L 30,50 C 20,60 20,70 30,80 C 40,90 50,90 60,80 L 85,55 C 90,50 90,40 85,35 C 80,30 70,30 65,35 L 40,60 C 37,63 37,67 40,70 C 43,73 47,73 50,70 L 70,50" stroke="#d1d5db" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(3px 5px 4px rgba(0,0,0,0.4));"/>
+    </svg>
+    </div>
+               </div>
+           </div>
+       </div>
+       <!-- Right Column: Navigation List -->
+       <div class="projects-nav-col">
+           <div class="project-nav-list">
+               <div class="project-nav-item active" data-index="0">
+                   <div class="nav-item-avatar"><img src="assets/img/windpad-icon.png" alt="WindPad"></div>
+                   <div class="nav-item-text">
+                       <h4>WindPad</h4>
+                   </div>
+                   <div class="nav-active-indicator"></div>
+               </div>
+               <div class="project-nav-item" data-index="1">
+                   <div class="nav-item-avatar"><img src="assets/img/ai-face.png" alt="Face Recognition"></div>
+                   <div class="nav-item-text">
+                       <h4>AI Face Recognition Attendance</h4>
+                   </div>
+                   <div class="nav-active-indicator"></div>
+               </div>
+               <div class="project-nav-item" data-index="2">
+                   <div class="nav-item-avatar"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100 100" class="custom-avatar-svg"><path fill="#ee3e54" d="M13 27A2 2 0 1 0 13 31A2 2 0 1 0 13 27Z"></path><path fill="#f1bc19" d="M77 12A1 1 0 1 0 77 14A1 1 0 1 0 77 12Z"></path><path fill="#fce0a2" d="M50 13A37 37 0 1 0 50 87A37 37 0 1 0 50 13Z"></path><path fill="#f1bc19" d="M83 11A4 4 0 1 0 83 19A4 4 0 1 0 83 11Z"></path><path fill="#ee3e54" d="M87 22A2 2 0 1 0 87 26A2 2 0 1 0 87 22Z"></path><path fill="#fbcd59" d="M81 74A2 2 0 1 0 81 78 2 2 0 1 0 81 74zM15 59A4 4 0 1 0 15 67 4 4 0 1 0 15 59z"></path><path fill="#ee3e54" d="M25 85A2 2 0 1 0 25 89A2 2 0 1 0 25 85Z"></path><path fill="#fff" d="M18.5 51A2.5 2.5 0 1 0 18.5 56A2.5 2.5 0 1 0 18.5 51Z"></path><path fill="#f1bc19" d="M21 66A1 1 0 1 0 21 68A1 1 0 1 0 21 66Z"></path><path fill="#fff" d="M80 33A1 1 0 1 0 80 35A1 1 0 1 0 80 33Z"></path><g><path fill="#cdcbbd" d="M29.509,69.3c-0.503,0-1.126-0.145-1.482-1.275c-0.274-0.872-0.273-1.945-0.272-2.655L27.7,37.796v-3.822c0-1.694,1.321-3.072,2.945-3.072h17.646c1.659,0,3.009,1.455,3.009,3.244v1.459c0,1.244,0.968,2.257,2.157,2.257h16.086c0.417,0,0.757,0.385,0.757,0.857v23.565c0,0.334,0.013,0.748,0.026,1.214c0.05,1.703,0.131,4.46-0.436,5.802H29.509z"></path><path fill="#472b29" d="M48.291,31.601c1.273,0,2.309,1.141,2.309,2.544v1.458c0,1.631,1.282,2.957,2.857,2.957l16.076-0.002c0.011,0.005,0.067,0.053,0.067,0.159v23.566c0,0.339,0.012,0.761,0.026,1.234c0.038,1.287,0.11,3.738-0.236,5.082h-39.88c-0.266,0-0.567,0-0.815-0.786c-0.242-0.769-0.241-1.777-0.241-2.444l0-0.092L28.4,37.797v-3.824c0-1.308,1.007-2.372,2.245-2.372H48.291 M48.291,30.201H30.645c-2.005,0-3.645,1.698-3.645,3.772v3.824l0.054,27.484C27.054,66.704,27,70,29.509,70h40.804C71.368,68.355,71,64.102,71,62.285V38.719c0-0.86-0.652-1.557-1.457-1.557H53.457c-0.805,0-1.457-0.697-1.457-1.557v-1.458C52,31.977,50.331,30.201,48.291,30.201L48.291,30.201z"></path></g><g><path fill="#fdfcee" d="M29.594,69.3c-0.061-0.007-0.15-0.105-0.214-0.215c1.214-0.343,1.32-2.538,1.32-5.146V42.231c0-0.293,0.229-0.531,0.512-0.531h41.576c0.282,0,0.512,0.238,0.512,0.531v23.582c0,1.923-1.534,3.486-3.42,3.486H29.594z"></path><path fill="#472b29" d="M72.6,42.4v23.413c0,1.537-1.22,2.787-2.72,2.787H30.849c0.551-1.191,0.551-3.047,0.551-4.66V42.4H72.6 M72.788,41H31.212C30.542,41,30,41.551,30,42.231V63.94c0,2.779-0.188,4.492-0.974,4.492c-0.85,0-0.282,1.568,0.568,1.568H69.88c2.275,0,4.12-1.874,4.12-4.187V42.231C74,41.551,73.458,41,72.788,41L72.788,41z"></path></g><g><path fill="#472b29" d="M41.5,35h-11c-0.276,0-0.5-0.224-0.5-0.5s0.224-0.5,0.5-0.5h11c0.276,0,0.5,0.224,0.5,0.5S41.776,35,41.5,35z"></path></g><g><path fill="#472b29" d="M48.5,35h-4c-0.276,0-0.5-0.224-0.5-0.5s0.224-0.5,0.5-0.5h4c0.276,0,0.5,0.224,0.5,0.5S48.776,35,48.5,35z"></path></g><g><path fill="#472b29" d="M51.5,53h-14c-0.276,0-0.5-0.224-0.5-0.5v-6c0-0.276,0.224-0.5,0.5-0.5h14c0.276,0,0.5,0.224,0.5,0.5v6C52,52.776,51.776,53,51.5,53z M38,52h13v-5H38V52z"></path></g></svg></div>
+                   <div class="nav-item-text">
+                       <h4>Exploratory Analytics & Recommender</h4>
+                   </div>
+                   <div class="nav-active-indicator"></div>
+               </div>
+               <div class="project-nav-item" data-index="3">
+                   <div class="nav-item-avatar"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 48 48" class="custom-avatar-svg"><path fill="#ff7501" d="M35,18v23h5c0-1,0-1.748,0-2.511V18H35z" opacity=".1"></path><path fill="#ff7501" d="M34.25,18v23h5.563c-0.452-0.799-0.563-1.748-0.563-2.511V18H34.25z" opacity=".2"></path><path fill="#ff7501" d="M33.5,18v23h6.126c-0.905-0.598-1.126-1.748-1.126-2.511V18H33.5z" opacity=".3"></path><path fill="#ff7501" d="M32.75,18v23h6.69c-1.357-0.397-1.69-1.748-1.69-2.511V18H32.75z" opacity=".4"></path><path fill="#ff7501" d="M32,18v23h7.253C37.443,40.804,37,39.252,37,38.489V18H32z" opacity=".5"></path><linearGradient id="bulkGrad1" x1="25.776" x2="16.884" y1="42.294" y2="14.173" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ff6201"></stop><stop offset=".689" stop-color="#fdbd19"></stop><stop offset="1" stop-color="#fce724"></stop></linearGradient><path fill="url(#bulkGrad1)" d="M35,11H21l-4-4H6C4.9,7,4,7.9,4,9v29.068C4,39.687,5.313,41,6.932,41h32.524C38.12,41.016,37,39.875,37,38.489V13C37,11.9,36.1,11,35,11z"></path><path fill="#fe910d" d="M39.198,41C37.988,40.817,37,39.875,37,38.481V18v-2H12c-2.206,0-4,1.794-4,4v18 c0,1-0.626,3-1,3h30H39.198z" opacity=".1"></path><path fill="#fe910d" d="M37,41h2.198C37.988,40.817,37,39.875,37,38.481V18v-1.667H12.369 c-0.76,0-1.831,0.256-2.393,0.686C8.997,17.629,8.333,18.739,8.333,20v17.941c0,0.093-0.007,0.256-0.019,0.367 c-0.096,1.06-0.617,2.516-1.014,2.601C7.29,40.916,7.28,40.949,7.269,41H37z" opacity=".2"></path><path fill="#fe910d" d="M37,41h2.198C37.988,40.817,37,39.875,37,38.481V18v-1.333H12.738 c-0.608,0-1.908,0.205-2.357,0.549C9.378,17.703,8.667,18.771,8.667,20v17.882c0,0.075-0.005,0.276-0.015,0.364 c-0.077,1.066-0.588,2.4-1.05,2.571C7.571,40.839,7.539,40.911,7.506,41H37z" opacity=".3"></path><path fill="#fe910d" d="M37,41h2.198C37.988,40.817,37,39.875,37,38.481V18v-1H13.108 c-0.456,0-1.985,0.154-2.322,0.412C9.758,17.777,9,18.803,9,20v17.823c0,0.056-0.004,0.295-0.011,0.362 c-0.057,1.073-0.559,2.285-1.087,2.541c-0.063,0.044-0.13,0.146-0.2,0.274H37z" opacity=".4"></path><path fill="#fe910d" d="M37,41h2.198C37.988,40.817,37,39.875,37,38.481V18v-0.667H13.477 c-0.304,0-2.062,0.102-2.286,0.274C10.139,17.852,9.333,18.835,9.333,20v17.764c0,0.037-0.003,0.315-0.007,0.359 c-0.038,1.079-0.529,2.17-1.123,2.511C8.093,40.712,7.974,40.85,7.848,41H37z" opacity=".5"></path><path fill="#fe910d" d="M37,41h2.198C37.988,40.817,37,39.875,37,38.481V18v-0.333H13.846 c-0.152,0-2.139,0.051-2.251,0.137C10.52,17.926,9.667,18.868,9.667,20v17.705c0,0.019-0.001,0.335-0.004,0.357 c-0.019,1.086-0.5,2.055-1.16,2.481C8.314,40.677,8.101,40.849,7.875,41H37z" opacity=".6"></path><linearGradient id="bulkGrad2" x1="-107.768" x2="-85.275" y1="43.07" y2="16.06" gradientTransform="matrix(-1 0 0 1 -71 0)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f4805d" stop-opacity=".4"></stop><stop offset="1" stop-color="#ffcfae" stop-opacity=".2"></stop></linearGradient><path fill="url(#bulkGrad2)" d="M13,18h29c1.1,0,2,0.9,2,2v18.583C44,39.918,42.918,41,41.583,41H8c1.617,0,3-1.149,3-3V20C11,18.9,11.9,18,13,18z"></path><linearGradient id="bulkGrad3" x1="17.767" x2="46.142" y1="24.12" y2="44.336" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="ivory" stop-opacity=".2"></stop><stop offset="1" stop-color="#f4805d" stop-opacity=".4"></stop></linearGradient><path fill="url(#bulkGrad3)" d="M42,18.5c0.827,0,1.5,0.673,1.5,1.5v18.583c0,1.057-0.86,1.917-1.917,1.917H10.521c0.615-0.621,0.979-1.492,0.979-2.5V20c0-0.827,0.673-1.5,1.5-1.5H42 M42,18H13c-1.1,0-2,0.9-2,2v18c0,1.851-1.383,3-3,3h33.583C42.918,41,44,39.918,44,38.583V20C44,18.9,43.1,18,42,18L42,18z"></path></svg></div>
+                   <div class="nav-item-text">
+                       <h4>Bulk File Automator</h4>
+                   </div>
+                   <div class="nav-active-indicator"></div>
+               </div>
+               <div class="project-nav-item" data-index="4">
+                   <div class="nav-item-avatar"><img src="assets/img/doc-intelligence.png" alt="Doc Intelligence"></div>
+                   <div class="nav-item-text">
+                       <h4>RAG Document Intelligence</h4>
+                   </div>
+                   <div class="nav-active-indicator"></div>
+               </div>
+               <div class="project-nav-item" data-index="5">
+                   <div class="nav-item-avatar"><img src="assets/img/ai-automation.png" alt="AI Engine"></div>
+                   <div class="nav-item-text">
+                       <h4>AI Automation Engine</h4>
+                   </div>
+                   <div class="nav-active-indicator"></div>
+               </div>
+           </div>
+       </div>
+    </div>
+</section>
 
-      <!-- The entire animation stage -->
-      <div class="projects-stage">
 
-        <!-- Laptop Centerpiece (Canvas for 3D model) -->
-        <div class="laptop-wrap" id="laptop-wrap">
-          <canvas id="laptop-canvas"></canvas>
-
-          <!-- Screen content overlay — folders visible on the white screen area -->
-          <div class="laptop-screen-overlay" id="laptop-screen">
-            <!-- macOS-style top bar -->
-            <div class="screen-menubar">
-              <div class="smb-dots">
-                <span></span><span></span><span></span>
-              </div>
-              <span class="smb-title">Projects — Aditya Achary</span>
-              <span class="smb-time">⌘</span>
-            </div>
-
-            <!-- Folder desktop grid -->
-            <div class="screen-folders">
-
-              <div class="sf-item" data-project="1">
-                <div class="sf-icon">
-                  <svg viewBox="0 0 56 48" fill="none"><path d="M4 8C4 5.79 5.79 4 8 4H20L26 10H48C50.21 10 52 11.79 52 14V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V8Z" fill="#4a9eff" opacity="0.85"/><path d="M4 16H52V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V16Z" fill="#5aadff"/></svg>
-                </div>
-                <span>Face Recognition</span>
-              
-                <div class="sf-popup">
-                  <h4>Face Recognition</h4>
-                  <p>A robust deep learning model for real-time facial recognition and detection.</p>
-                  <a href="https://github.com/Aditya-err" target="_blank" class="sf-popup-btn">View on GitHub</a>
-                </div>
-              </div><div class="sf-item" data-project="2">
-                <div class="sf-icon">
-                  <svg viewBox="0 0 56 48" fill="none"><path d="M4 8C4 5.79 5.79 4 8 4H20L26 10H48C50.21 10 52 11.79 52 14V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V8Z" fill="#4a9eff" opacity="0.85"/><path d="M4 16H52V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V16Z" fill="#5aadff"/></svg>
-                </div>
-                <span>Analytics &amp; ML</span>
-              
-                <div class="sf-popup">
-                  <h4>Analytics & ML</h4>
-                  <p>Data analysis and machine learning pipelines for predictive modeling.</p>
-                  <a href="https://github.com/Aditya-err" target="_blank" class="sf-popup-btn">View on GitHub</a>
-                </div>
-              </div><div class="sf-item sf-featured" data-project="3">
-                <div class="sf-icon">
-                  <svg viewBox="0 0 56 48" fill="none"><path d="M4 8C4 5.79 5.79 4 8 4H20L26 10H48C50.21 10 52 11.79 52 14V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V8Z" fill="#38bdf8" opacity="0.9"/><path d="M4 16H52V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V16Z" fill="#7dd3fc"/></svg>
-                </div>
-                <span>WindPad</span>
-              
-                <div class="sf-popup">
-                  <h4>WindPad</h4>
-                  <p>A modern, lightweight text editor with a sleek interface and robust features.</p>
-                  <a href="https://github.com/Aditya-err" target="_blank" class="sf-popup-btn">View on GitHub</a>
-                </div>
-              </div><div class="sf-item" data-project="4">
-                <div class="sf-icon">
-                  <svg viewBox="0 0 56 48" fill="none"><path d="M4 8C4 5.79 5.79 4 8 4H20L26 10H48C50.21 10 52 11.79 52 14V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V8Z" fill="#4a9eff" opacity="0.85"/><path d="M4 16H52V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V16Z" fill="#5aadff"/></svg>
-                </div>
-                <span>File Automator</span>
-              
-                <div class="sf-popup">
-                  <h4>File Automator</h4>
-                  <p>Python scripts to automate file organization, batch renaming, and backups.</p>
-                  <a href="https://github.com/Aditya-err" target="_blank" class="sf-popup-btn">View on GitHub</a>
-                </div>
-              </div><div class="sf-item" data-project="5">
-                <div class="sf-icon">
-                  <svg viewBox="0 0 56 48" fill="none"><path d="M4 8C4 5.79 5.79 4 8 4H20L26 10H48C50.21 10 52 11.79 52 14V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V8Z" fill="#4a9eff" opacity="0.85"/><path d="M4 16H52V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V16Z" fill="#5aadff"/></svg>
-                </div>
-                <span>Doc Intelligence</span>
-              
-                <div class="sf-popup">
-                  <h4>Doc Intelligence</h4>
-                  <p>AI-powered document extraction and OCR tool for smart data entry.</p>
-                  <a href="https://github.com/Aditya-err" target="_blank" class="sf-popup-btn">View on GitHub</a>
-                </div>
-              </div><div class="sf-item" data-project="6">
-                <div class="sf-icon">
-                  <svg viewBox="0 0 56 48" fill="none"><path d="M4 8C4 5.79 5.79 4 8 4H20L26 10H48C50.21 10 52 11.79 52 14V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V8Z" fill="#4a9eff" opacity="0.85"/><path d="M4 16H52V40C52 42.21 50.21 44 48 44H8C5.79 44 4 42.21 4 40V16Z" fill="#5aadff"/></svg>
-                </div>
-                <span>AI Engine</span>
-              </div>
-
-            </div><!-- /screen-folders -->
-          </div><!-- /laptop-screen-overlay -->
-        </div><!-- /laptop-wrap -->
-
-      </div><!-- /projects-stage -->
-
-    </section><!-- /projects -->
 
     <section class="section" id="experience">
       <div class="journey-header">
@@ -1086,17 +1254,6 @@
   </div>
 
   <script src="script.js"></script>
-  <!-- Load Three.js globally -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <!-- Load GLTFLoader globally (compatible with r128) -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-  <!-- Interactive Addons -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/renderers/CSS3DRenderer.js"></script>
-  
-  <!-- Base64 Encoded Assets (Bypasses CORS for local files) -->
-  <script src="assets/3d/models-base64.js"></script>
-  
-  <script src="three-laptop.js"></script>
 </body>
+
 </html>

@@ -348,12 +348,6 @@ window.addEventListener('scroll', () => {
 
 
 // ===================================================================
-// 21. PROJECTS — LAPTOP 3D SCROLL ZOOM
-// ===================================================================
-
-
-
-// ===================================================================
 // 4. SMOOTH SCROLL
 // ===================================================================
 // 4. ROBUST SMOOTH SCROLL (Delegation for dynamic or late-added items like Dock)
@@ -1448,7 +1442,7 @@ function copyToClipboard(text, element) {
         scrollTrigger: {
             trigger: header,
             start: "top top",
-            end: "+=2500", // Adjusted for better UX so it doesn't take forever to appear
+            end: "+=3500", // Adjusted for better UX so it doesn't take forever to appear
             pin: true,
             scrub: 2.2,
             anticipatePin: 1
@@ -1488,22 +1482,28 @@ function copyToClipboard(text, element) {
         }
     }, 0.3);
 
-    // Removed the black background fade to keep it transparent
-    // 3. Smooth "Hump" Snake Wave (Continuous Flow)
-    gsap.fromTo(chars,
-        { y: 35, opacity: 0.8 },
-        {
-            y: -35,
-            opacity: 1,
-            ease: "sine.inOut",
-            duration: 1.2,
-            stagger: {
-                each: 0.08,
-                repeat: -1,
-                yoyo: true
-            }
+    // 3. Smooth Wave — starts only when section enters viewport
+    ScrollTrigger.create({
+        trigger: header,
+        start: "top 80%",
+        once: true,
+        onEnter: () => {
+            gsap.fromTo(chars,
+                { y: 40, opacity: 0.7 },
+                {
+                    y: -40,
+                    opacity: 1,
+                    ease: "sine.inOut",
+                    duration: 1.0,
+                    stagger: {
+                        each: 0.07,
+                        repeat: -1,
+                        yoyo: true
+                    }
+                }
+            );
         }
-    );
+    });
 })();
 // ===================================================================
 // 17. PROJECT MODAL INTERACTION
@@ -2082,4 +2082,108 @@ function startHeroTypewriter() {
 
     // Tell GSAP ticker not to lag-catch (avoids jitter after tab switch)
     gsap.ticker.lagSmoothing(0);
+})();
+
+
+
+// ===================================================================
+// 24. REDESIGNED PROJECTS STACKED LAYOUT LOGIC (EXACT MATCH)
+// ===================================================================
+(function initStackedProjects() {
+    const navItems = document.querySelectorAll('.project-nav-item');
+    const stackedCards = document.querySelectorAll('.stacked-card');
+    
+    if (navItems.length === 0 || stackedCards.length === 0) return;
+
+    let currentIndex = 0;
+
+    function updateStack(index) {
+        // Update nav items
+        navItems.forEach((item, i) => {
+            if (i === index) item.classList.add('active');
+            else item.classList.remove('active');
+        });
+
+        // Update cards
+        stackedCards.forEach((card, i) => {
+            card.classList.remove('active', 'stacked');
+            
+            // Kill any ongoing tweens to prevent conflicts
+            gsap.killTweensOf(card);
+            
+            if (i === index) {
+                card.classList.add('active');
+                gsap.to(card, {
+                    scale: 1,
+                    y: 0,
+                    x: 0,
+                    rotationZ: -1.5,
+                    opacity: 1,
+                    zIndex: 10,
+                    duration: 0.5,
+                    ease: "power2.out"
+                });
+            } else {
+                card.classList.add('stacked');
+                let offset = i - index;
+                
+                if (offset < 0) {
+                    // Previous cards - fade them up and out
+                    gsap.to(card, {
+                        scale: 0.95,
+                        y: -30,
+                        x: 0,
+                        rotationZ: -1.5,
+                        opacity: 0,
+                        zIndex: 0,
+                        duration: 0.4,
+                        ease: "power2.out"
+                    });
+                } else {
+                    // Next cards - stack them behind with slight rotation
+                    // Offset 1: slightly rotated clockwise, lower down
+                    // Offset 2: slightly rotated counter-clockwise, even lower
+                    // Offset 3+: further back
+                    let rot = offset % 2 === 0 ? -2 : 3;
+                    rot = rot * (offset * 0.8); 
+                    
+                    if (offset <= 3) {
+                        gsap.to(card, {
+                            scale: 1,
+                            y: offset * 20, // Stack downwards
+                            x: offset * 5,  // Slight offset to right
+                            rotationZ: rot,
+                            opacity: 1 - (offset * 0.15),
+                            zIndex: 10 - offset,
+                            duration: 0.5,
+                            ease: "power2.out"
+                        });
+                    } else {
+                        gsap.to(card, {
+                            scale: 0.9,
+                            y: 80,
+                            x: 0,
+                            rotationZ: -1.5,
+                            opacity: 0,
+                            zIndex: 0,
+                            duration: 0.4,
+                            ease: "power2.out"
+                        });
+                    }
+                }
+            }
+        });
+    }
+
+    navItems.forEach((item, i) => {
+        item.addEventListener('click', () => {
+            if (currentIndex !== i) {
+                currentIndex = i;
+                updateStack(currentIndex);
+            }
+        });
+    });
+
+    // Initialize
+    updateStack(currentIndex);
 })();
